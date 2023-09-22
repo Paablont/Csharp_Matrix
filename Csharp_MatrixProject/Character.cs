@@ -8,14 +8,14 @@ namespace Csharp_MatrixProject
 {
     internal class Character
     {
-        private string name { get; set; }
-        private string cityName { get; set; }
-        private int latitude { get; set; }
-        private int longitude { get; set; }
-        private int age { get; set; }
-        private int idCharacter { get; set; }
-        private double deathPerc { get; set; }
-        private static int characterCount { get; set; }
+        public string name {get; set; }
+        public string cityName { get; set; }
+        public int latitude { get; set; }
+        public int longitude { get; set; }
+        public int age { get; set; }
+        public int idCharacter { get; set; }
+        public double deathPerc { get; set; }
+        public static int characterCount { get; set; }
 
         public Character(string name, string cityName, int latitude, int longitude, int age, int idCharacter, double deathPerc)
         {
@@ -27,6 +27,21 @@ namespace Csharp_MatrixProject
             this.idCharacter = idCharacter;
             this.deathPerc = deathPerc;
             characterCount++;
+
+        }
+
+        public override string? ToString()
+        {
+            return "ID: " + idCharacter + "\n" +
+                "Name: " + name + "\n" +
+                "Age: " + age + "\n" +
+                "City name: " + cityName + "\n" +
+                "Latitude: " + latitude + "\n" +
+                "Longitude: " + longitude + "\n" +
+                "Death Percentaje : " + Math.Round(deathPerc,2);
+                
+                
+                
         }
     }
 }

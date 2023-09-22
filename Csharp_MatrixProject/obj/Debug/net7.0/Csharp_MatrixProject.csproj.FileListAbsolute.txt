@@ -1,0 +1,14 @@
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\bin\Debug\net7.0\Csharp_MatrixProject.exe
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\bin\Debug\net7.0\Csharp_MatrixProject.deps.json
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\bin\Debug\net7.0\Csharp_MatrixProject.runtimeconfig.json
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\bin\Debug\net7.0\Csharp_MatrixProject.dll
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\bin\Debug\net7.0\Csharp_MatrixProject.pdb
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\obj\Debug\net7.0\Csharp_MatrixProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\obj\Debug\net7.0\Csharp_MatrixProject.AssemblyInfoInputs.cache
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\obj\Debug\net7.0\Csharp_MatrixProject.AssemblyInfo.cs
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\obj\Debug\net7.0\Csharp_MatrixProject.csproj.CoreCompileInputs.cache
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\obj\Debug\net7.0\Csharp_MatrixProject.dll
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\obj\Debug\net7.0\refint\Csharp_MatrixProject.dll
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\obj\Debug\net7.0\Csharp_MatrixProject.pdb
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\obj\Debug\net7.0\Csharp_MatrixProject.genruntimeconfig.cache
+C:\Users\Alumno\Desktop\RepMatrix\Csharp_MatrixProject\Csharp_MatrixProject\obj\Debug\net7.0\ref\Csharp_MatrixProject.dll
