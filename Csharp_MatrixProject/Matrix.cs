@@ -10,9 +10,9 @@ namespace Csharp_MatrixProject
     internal class Matrix
 
     {
-        private const int raws = 15;
-        private const int cols = 15;
-        List<int> matrix;
+        private const int raws = 5;
+        private const int cols = 5;
+         
 
         public Matrix()
         {

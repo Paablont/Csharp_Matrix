@@ -8,14 +8,9 @@ namespace Csharp_MatrixProject
 {
     internal class Character
     {
-        public string name {get; set; }
-        public string cityName { get; set; }
-        public int latitude { get; set; }
-        public int longitude { get; set; }
-        public int age { get; set; }
-        public int idCharacter { get; set; }
-        public double deathPerc { get; set; }
-        public static int characterCount { get; set; }
+        public string name, cityName;
+        public int latitude, longitude, age, idCharacter, characterCount = 0;
+        private double deathPerc;
 
         public Character(string name, string cityName, int latitude, int longitude, int age, int idCharacter, double deathPerc)
         {
@@ -30,15 +25,56 @@ namespace Csharp_MatrixProject
 
         }
 
+        public  string Name { get { return name; } set { name = value; } }
+        public string CityName { get { return cityName; } set {  cityName = value; } }
+        public int Latitude { get { return latitude;} set { latitude = value; } }
+        public int Longitude { get { return longitude;} set { longitude = value; } }
+        public int Age { get { return age;} set { age = value; } }
+        public int IdCharacter { get { return idCharacter; } set { idCharacter = value; } }
+        public double DeathPerc { get {  return deathPerc; } set {  deathPerc = value; } }
+        
+
+
+        public Character[] charDeath(Character[] character)
+        {
+            Character[] result;
+            int charactersDeath = 0;
+            int charactersAlive = 0;
+            for (int i = 0; i < character.Length; i++)
+            {
+                if (character[i].deathPerc > 0.7)
+                {
+                    Console.WriteLine("El personaje ha muerto");
+                    charactersDeath++;
+                }
+                else
+                {
+                    character[i].deathPerc = character[i].deathPerc * 0.1;
+                }
+            }
+
+            charactersAlive = character.Length - charactersDeath;
+            result = new Character[charactersAlive];
+
+            //Ahora creo una nueva matriz con los que quedan vivos
+            int newIndent = 0;
+            for (int i = 0; i < character.Length; i++)
+            {
+                if (character[i].deathPerc <= 0.7)
+                {
+                    result[newIndent] = character[i];
+                    newIndent++;
+                }
+            }
+
+            return result;
+
+        }
+
         public override string? ToString()
         {
-            return "ID: " + idCharacter + "\n" +
-                "Name: " + name + "\n" +
-                "Age: " + age + "\n" +
-                "City name: " + cityName + "\n" +
-                "Latitude: " + latitude + "\n" +
-                "Longitude: " + longitude + "\n" +
-                "Death Percentaje : " + Math.Round(deathPerc,2);
+            return
+                "Name: " + name;
                 
                 
                 

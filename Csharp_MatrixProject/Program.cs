@@ -1,8 +1,30 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Csharp_MatrixProject;
+﻿using Csharp_MatrixProject;
 
-Console.WriteLine("Hello, World!");
-CharacterFactory c = new CharacterFactory() ;
-Character charact = c.charCreation();
+Character[] charactersArray = new Character[10];
+Character c;
+CharacterFactory cF = new CharacterFactory();
+Matrix m = new Matrix();
+MatrixFactory mF = new MatrixFactory();
+Character[,] board = new Character[m.Raws, m.Cols];
+int charactersInMatrix = 4;
 
-Console.WriteLine(charact.ToString());
+//Agrega los personajes al array
+cF.namesInArrays(charactersArray);
+
+cF.imprimirCharacters(charactersArray);
+
+c.charDeaths(charactersArray); 
+
+
+//Distribuir los personajes por el tablero
+mF.matrixCreation(charactersArray, board);
+
+mF.boardPrint(board);
+
+
+
+
+
+
+
+
