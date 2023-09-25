@@ -9,6 +9,8 @@ MatrixFactory mf = new MatrixFactory();
 Character[,] board = new Character[m.Raws,m.Cols];
 int charactersInMatrix = 4;
 
+//WOWOWO
+
 //Agrega los personajes al array
 cf.charInArray(charactersArray,nf, smf);
 
