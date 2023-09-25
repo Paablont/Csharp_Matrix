@@ -1,25 +1,23 @@
 ﻿using Csharp_MatrixProject;
 
-Character[] charactersArray = new Character[10];
-Character c;
-CharacterFactory cF = new CharacterFactory();
+CharacterFactory cf = new CharacterFactory();
+NeoFactory nf = new NeoFactory();
+SmithFactory smf = new SmithFactory();
+Character[] charactersArray = new Character[200];
 Matrix m = new Matrix();
-MatrixFactory mF = new MatrixFactory();
-Character[,] board = new Character[m.Raws, m.Cols];
+MatrixFactory mf = new MatrixFactory();
+Character[,] board = new Character[m.Raws,m.Cols];
 int charactersInMatrix = 4;
 
 //Agrega los personajes al array
-cF.namesInArrays(charactersArray);
+cf.charInArray(charactersArray,nf, smf);
 
-cF.imprimirCharacters(charactersArray);
-
-c.charDeaths(charactersArray); 
-
+//cf.imprimirCharacters(charactersArray);
 
 //Distribuir los personajes por el tablero
-mF.matrixCreation(charactersArray, board);
+mf.matrixCreation(charactersArray, board);
 
-mF.boardPrint(board);
+mf.boardPrint(board);
 
 
 

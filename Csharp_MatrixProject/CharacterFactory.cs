@@ -10,12 +10,12 @@ namespace Csharp_MatrixProject
     internal class CharacterFactory
     {
         string[] names = { "Michelle", "Alexander", "James", "Caroline", "Claire", "Jessica", "Erik", "Mike" };
-
         string[] cities = { "Nueva York", "Boston", "Baltimore", "Atlanta", "Detroit", "Dallas", "Denver" };
-
+        Character[] charactersArray = new Character[200];
         Character c;
         Matrix m = new Matrix();
         Random rnd = new Random();
+
         int namesInt, citiesInt, latitude, longitude, id, age;
         double deathPerc;
 
@@ -34,47 +34,34 @@ namespace Csharp_MatrixProject
             longitude = rnd.Next(1, m.Cols);
             id = rnd.Next(1, 200);
             deathPerc = rnd.NextDouble();
-            //do
-            //{
-            //    if (names[namesInt].Equals("Neo"))
-            //    {
-            //        c = new Character(names[namesInt], cities[citiesInt], latitude, longitude, age, id, deathPerc);
-            //        contadorNeo = 1;
-            //    }
-            //    if (names[namesInt].Equals("Neo"))
-            //    {
-            //        c = new Character(names[namesInt], cities[citiesInt], latitude, longitude, age, id, deathPerc);
-            //        contadorNeo = 1;
-            //    }
 
-            //} while (contadorNeo == 1 && contadorSmith == 1);
-            
-            
             return c = new Character(names[namesInt], cities[citiesInt], latitude, longitude, age, id, deathPerc);
 
         }
 
-        public Character[] namesInArrays(Character[] charactersArray)
+        public Character[] charInArray(Character[] charactersArray, NeoFactory nf, SmithFactory smf)
         {
-            for (int i = 0; i < charactersArray.Length; i++)
+           
+           charactersArray[0] = nf.neoCreation();
+            charactersArray[1] = smf.smithCreation();
+            for (int i = 2; i < charactersArray.Length; i++)
             {
                 charactersArray[i] = charCreation();
+                
             }
 
             return charactersArray;
         }
 
-        
-
 
         //Metodo para imprimir caracteres
-        public void imprimirCharacters(Character[] characters)
-        {
-            for (int i = 0; i < characters.Length; i++)
-            {
-                Console.WriteLine(characters[i].Name +" "+ characters[i].latitude + " " + characters[i].longitude);
-            }
-        }
+        //public void imprimirCharacters(Character[] characters)
+        //{
+        //    for (int i = 0; i < characters.Length; i++)
+        //    {
+        //        Console.WriteLine(characters[i].Name + " " + characters[i].latitude + " " + characters[i].longitude);
+        //    }
+        //}
 
     }
 

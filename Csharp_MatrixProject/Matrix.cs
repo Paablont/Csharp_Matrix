@@ -10,9 +10,10 @@ namespace Csharp_MatrixProject
     internal class Matrix
 
     {
-        private const int raws = 5;
-        private const int cols = 5;
-         
+        Character c;
+        private const int raws = 15;
+        private const int cols = 15;
+        
 
         public Matrix()
         {
@@ -29,7 +30,8 @@ namespace Csharp_MatrixProject
             get { return cols; }
         }
 
-       
+        //Metodos de turno de cada jugador(Neo, Smith, PersonajeGenerico
+        //Quizás con el objeto de c pueda hacer is (instanceof) y según que clase sea hago X,Y o Z
 
 
     }

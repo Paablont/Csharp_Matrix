@@ -25,6 +25,11 @@ namespace Csharp_MatrixProject
 
         }
 
+        public Character()
+        {
+            characterCount++;
+        }
+
         public  string Name { get { return name; } set { name = value; } }
         public string CityName { get { return cityName; } set {  cityName = value; } }
         public int Latitude { get { return latitude;} set { latitude = value; } }
@@ -32,12 +37,13 @@ namespace Csharp_MatrixProject
         public int Age { get { return age;} set { age = value; } }
         public int IdCharacter { get { return idCharacter; } set { idCharacter = value; } }
         public double DeathPerc { get {  return deathPerc; } set {  deathPerc = value; } }
-        
 
 
-        public Character[] charDeath(Character[] character)
+
+/*
+        public Character[,] charDeath(Character[,] character)
         {
-            Character[] result;
+            Character[,] result;
             int charactersDeath = 0;
             int charactersAlive = 0;
             for (int i = 0; i < character.Length; i++)
@@ -70,6 +76,8 @@ namespace Csharp_MatrixProject
             return result;
 
         }
+*/
+        
 
         public override string? ToString()
         {

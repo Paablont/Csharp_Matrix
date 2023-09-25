@@ -10,8 +10,9 @@ namespace Csharp_MatrixProject
     internal class MatrixFactory
     {
 
-        CharacterFactory cf = new CharacterFactory();
         Matrix m = new Matrix();
+
+
         public MatrixFactory() { }
 
 
@@ -20,49 +21,96 @@ namespace Csharp_MatrixProject
         public Character[,] matrixCreation(Character[] charactersArray, Character[,] board)
         {
             Random rnd = new Random();
+            bool foundNeo = false;
+            bool foundSmith = false;
             /*
-             He creado un int con random que genere un numero del 1 al tamaño del tablero
+            He creado un int con random que genere un numero del 1 al tamaño del tablero
             para que meta X personajes. Si no controlo esto, los 200 personajes no caben en el tablero
             (Bueno si caben pero si el tablero fuera mas pequeño no)
              */
-            int charactersInMatrix = rnd.Next(1, m.Cols);
-            for (int i = 0; i < board.GetLength(0); i++)
+            int charactersInMatrix = rnd.Next(1, charactersArray.Length);
+
+            do
             {
-
-                for (int j = 0; j < charactersInMatrix; j++)
+                for (int i = 0; i < board.GetLength(0); i++)
                 {
-                    
-                    board[charactersArray[j].latitude, charactersArray[j].longitude] = charactersArray[j];
 
+                    for (int j = 0; j < charactersInMatrix; j++)
+                    {
+
+                        board[charactersArray[j].latitude, charactersArray[j].longitude] = charactersArray[j];
+
+                    }
+
+                    break;
                 }
 
-                break;
-            }
+                foreach (Character c in board)
+                {
+                    if (c != null)
+                    {
+                        if (c.name.Equals("Neo"))
+                        {
+                            foundNeo = true;
+                            break;
+                        }
+                    }
+                    
+                }
 
+                foreach (Character c in board)
+                {
+                    if(c != null)
+                    {
+                        if (c.name.Equals("Smith"))
+                        {
+                            foundSmith = true;
+                            break;
+                        }
+                    }
+                }
+            } while (!foundNeo && !foundSmith);
             return board;
         }
 
         //Metodo para imprimir tablero
-        public void boardPrint(Character[,] characters)
+        public void boardPrint(Character[,] board)
         {
-            for (int i = 0; i < characters.GetLength(0); i++)
+            for (int i = 0; i < board.GetLength(0); i++)
             {
-                for (int j = 0; j < characters.GetLength(1); j++)
+                for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    if (characters[i, j] != null)
+                    if (board[i, j] != null)
                     {
-                        Console.Write("[C]\t");
+                        if (board[i, j].name.Equals("Neo"))
+                        {
+                            Console.Write("[N]\t");
+
+                        }
+                        else if (board[i, j].name.Equals("Smith"))
+                        {
+                            Console.Write("[S]\t");
+
+                        }
+                        else
+                        {
+                            Console.Write("[C]\t");
+                        }
+
+
                     }
                     else
                     {
                         Console.Write("[ ]\t");
                     }
-                    
+
 
                 }
                 Console.WriteLine();
 
             }
+
+
         }
     }
 }

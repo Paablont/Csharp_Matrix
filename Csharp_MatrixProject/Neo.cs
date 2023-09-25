@@ -14,6 +14,16 @@ namespace Csharp_MatrixProject
             this.elegido = elegido;
         }
 
+        public Neo()
+        {
 
+        }
+
+        public bool Elegido {get { return elegido; } set { elegido = value; } }
+
+        //Función moverse y elegir ser o no elegido
+
+
+        
     }
 }
