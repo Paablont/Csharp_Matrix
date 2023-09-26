@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Csharp_MatrixProject
 {
@@ -30,62 +32,49 @@ namespace Csharp_MatrixProject
             characterCount++;
         }
 
-        public  string Name { get { return name; } set { name = value; } }
-        public string CityName { get { return cityName; } set {  cityName = value; } }
-        public int Latitude { get { return latitude;} set { latitude = value; } }
-        public int Longitude { get { return longitude;} set { longitude = value; } }
-        public int Age { get { return age;} set { age = value; } }
+        public string Name { get { return name; } set { name = value; } }
+        public string CityName { get { return cityName; } set { cityName = value; } }
+        public int Latitude { get { return latitude; } set { latitude = value; } }
+        public int Longitude { get { return longitude; } set { longitude = value; } }
+        public int Age { get { return age; } set { age = value; } }
         public int IdCharacter { get { return idCharacter; } set { idCharacter = value; } }
-        public double DeathPerc { get {  return deathPerc; } set {  deathPerc = value; } }
+        public double DeathPerc { get { return deathPerc; } set { deathPerc = value; } }
 
 
-
-/*
-        public Character[,] charDeath(Character[,] character)
+        //Morir
+        public Character[,] charDeath(Character[,] board)
         {
-            Character[,] result;
-            int charactersDeath = 0;
-            int charactersAlive = 0;
-            for (int i = 0; i < character.Length; i++)
+            Character[,] charactersAlive = new Character[board.GetLength(0), board.GetLength(1)];
+
+            for (int i = 0; i < board.GetLength(0); i++)
             {
-                if (character[i].deathPerc > 0.7)
+                for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    Console.WriteLine("El personaje ha muerto");
-                    charactersDeath++;
-                }
-                else
-                {
-                    character[i].deathPerc = character[i].deathPerc * 0.1;
+                    if (board[i,j] != null)
+                    {
+                        if (board[i,j].deathPerc > 0.7)
+                        {
+                            board[i, j] = null;
+                        }
+                        else
+                        {
+                            board[i, j].deathPerc *= 0.1;
+                        }
+                        
+                    }
                 }
             }
 
-            charactersAlive = character.Length - charactersDeath;
-            result = new Character[charactersAlive];
-
-            //Ahora creo una nueva matriz con los que quedan vivos
-            int newIndent = 0;
-            for (int i = 0; i < character.Length; i++)
-            {
-                if (character[i].deathPerc <= 0.7)
-                {
-                    result[newIndent] = character[i];
-                    newIndent++;
-                }
-            }
-
-            return result;
-
+            return board;
         }
-*/
-        
 
         public override string? ToString()
         {
             return
                 "Name: " + name;
-                
-                
-                
+
+
+
         }
     }
 }

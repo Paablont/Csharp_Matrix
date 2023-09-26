@@ -11,8 +11,8 @@ namespace Csharp_MatrixProject
 
     {
         Character c;
-        private const int raws = 15;
-        private const int cols = 15;
+        private const int raws = 5;
+        private const int cols = 5;
         
 
         public Matrix()
