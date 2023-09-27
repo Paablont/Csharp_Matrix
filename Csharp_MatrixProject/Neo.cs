@@ -106,6 +106,8 @@ namespace Csharp_MatrixProject
                             //Comprobamos posicion arriba
                             if (charNeoGenerate != 1)
                             {
+                                
+                                
                                 if (board[latNeo - 1, longNeo] == null)
                                 {
                                     board[latNeo - 1, longNeo] = charactersArray[j];
@@ -113,7 +115,7 @@ namespace Csharp_MatrixProject
                                 }
                             }
                             //Comprobamos posicion abajo
-                            if (charNeoGenerate != 1)
+                            if (charNeoGenerate != 1 )
                             {
                                 if (board[latNeo + 1, longNeo] == null)
                                 {

@@ -27,33 +27,33 @@ Thread.Sleep(2000);
 Console.WriteLine("");
 Console.WriteLine("");
 Console.WriteLine("");
-Console.WriteLine("Pruebas de turno personaje");
+Console.WriteLine("Pruebas de muerte personaje");
 
-m.charactTurn(charactersArray, board);
+c.charDeath(board);
 Thread.Sleep(2000);
 mf.boardPrint(board);
 
-////Pruebas de turno neo
-//Console.WriteLine("");
-//Console.WriteLine("");
-//Console.WriteLine("");
-//Console.WriteLine("");
-//Console.WriteLine("Pruebas de turno neo");
+//Pruebas de turno neo
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("Pruebas de mov neo");
 
-//m.neoTurn(charactersArray, board);
-//mf.boardPrint(board);
+m.neoTurn(charactersArray, board);
+mf.boardPrint(board);
 
-////Pruebas de movimiento de Smith
-//Console.WriteLine("");
-//Console.WriteLine("");
-//Console.WriteLine("");
-//Console.WriteLine("");
-//Console.WriteLine("Pruebas de turno Smith");
+//Pruebas de movimiento de Smith
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("Pruebas de turno Smith");
 
 
-//Thread.Sleep(2000);
-//m.smithTurn(charactersArray, board);
-//mf.boardPrint(board);
+Thread.Sleep(2000);
+sm.smithMove(board);
+mf.boardPrint(board);
 
 
 

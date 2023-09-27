@@ -95,7 +95,7 @@ namespace Csharp_MatrixProject
                 neoRange = Math.Max(Math.Abs(neo.Latitude - smith.Latitude), Math.Abs(neo.Longitude - smith.Longitude));
 
             }
-            //Vemos si neo esta a la derecha o izquierda de smith y arriba o abajo
+            //Vemos si neo esta a la arriba o abaj  y derecha o izq
             if (neo.Latitude < smith.Latitude)
             {
                 neoIsUp = true;
