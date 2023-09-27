@@ -12,8 +12,8 @@ namespace Csharp_MatrixProject
 
     {
         Character c;
-        private const int raws = 15;
-        private const int cols = 15;
+        private const int raws = 5;
+        private const int cols = 5;
 
 
         public Matrix()
@@ -44,7 +44,7 @@ namespace Csharp_MatrixProject
                 {
                     if (board[i, j] != null)
                     {
-                        if (board[i, j].name.Equals("Neo"))
+                        if (board[i, j].Name.Equals("Neo"))
                         {
                             neo = (Neo)board[i, j];
                             if (neo.theChosenOne())
@@ -75,7 +75,7 @@ namespace Csharp_MatrixProject
                 {
                     if (board[i, j] != null)
                     {
-                        if (!board[i, j].name.Equals("Neo") && !board[i, j].name.Equals("Smith"))
+                        if (!board[i, j].Name.Equals("Neo") && !board[i, j].Name.Equals("Smith"))
                         {
                             c = board[i, j];
                             
@@ -98,7 +98,7 @@ namespace Csharp_MatrixProject
                 {
                     if (board[i, j] != null)
                     {
-                        if (board[i, j].name.Equals("Smith"))
+                        if (board[i, j].Name.Equals("Smith"))
                         {
                             smith = (Smith)board[i, j];
 

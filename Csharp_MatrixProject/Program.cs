@@ -38,7 +38,7 @@ Console.WriteLine("");
 Console.WriteLine("");
 Console.WriteLine("");
 Console.WriteLine("");
-Console.WriteLine("Pruebas de mov neo");
+Console.WriteLine("Pruebas de turno neo");
 
 m.neoTurn(charactersArray, board);
 mf.boardPrint(board);
@@ -48,12 +48,19 @@ Console.WriteLine("");
 Console.WriteLine("");
 Console.WriteLine("");
 Console.WriteLine("");
-Console.WriteLine("Pruebas de turno Smith");
-
+Console.WriteLine("Pruebas de mov Smith");
 
 Thread.Sleep(2000);
 sm.smithMove(board);
 mf.boardPrint(board);
+Console.WriteLine("");
+sm.smithMove(board);
+mf.boardPrint(board);
+Console.WriteLine("");
+
+
+
+
 
 
 

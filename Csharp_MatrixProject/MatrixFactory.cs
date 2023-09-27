@@ -29,7 +29,7 @@ namespace Csharp_MatrixProject
             (Bueno si caben pero si el tablero fuera mas pequeño no)
              */
             int charactersInMatrix = rnd.Next(50, charactersArray.Length-2);
-
+            if () { }
             do
             {
                 for (int i = 0; i < board.GetLength(0); i++)
@@ -38,37 +38,39 @@ namespace Csharp_MatrixProject
                     for (int j = 0; j < charactersInMatrix; j++)
                     {
 
-                        board[charactersArray[j].latitude, charactersArray[j].longitude] = charactersArray[j];
-
+                        board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[j];
+                        
                     }
 
                     break;
+                }
+                foreach (Character c in board)
+                {
+                    if (c != null)
+                    {
+                        if (c.Name.Equals("Neo"))
+                        {
+                            foundNeo = true;
+                            break;
+                        }
+                    }
+
+
                 }
 
                 foreach (Character c in board)
                 {
                     if (c != null)
                     {
-                        if (c.name.Equals("Neo"))
-                        {
-                            foundNeo = true;
-                            break;
-                        }
-                    }
-                    
-                }
-
-                foreach (Character c in board)
-                {
-                    if(c != null)
-                    {
-                        if (c.name.Equals("Smith"))
+                        if (c.Name.Equals("Smith"))
                         {
                             foundSmith = true;
                             break;
                         }
                     }
                 }
+
+
             } while (!foundNeo && !foundSmith);
             return board;
         }
@@ -82,12 +84,12 @@ namespace Csharp_MatrixProject
                 {
                     if (board[i, j] != null)
                     {
-                        if (board[i, j].name.Equals("Neo"))
+                        if (board[i, j].Name.Equals("Neo"))
                         {
                             Console.Write("[Neo]\t");
 
                         }
-                        else if (board[i, j].name.Equals("Smith"))
+                        else if (board[i, j].Name.Equals("Smith"))
                         {
                             Console.Write("[Smi]\t");
 

@@ -18,7 +18,7 @@ namespace Csharp_MatrixProject
         Random rnd = new Random();
         public Smith smithCreation()
         {
-            int contadorNeo = 0, contadorSmith = 0;
+            
             citiesInt = rnd.Next(1, cities.Length);
             age = rnd.Next(1, 90);
             latitude = rnd.Next(1, 15);
@@ -29,5 +29,7 @@ namespace Csharp_MatrixProject
             return n = new Smith(name, cities[citiesInt], latitude, longitude, age, id, deathPerc, infectRange);
 
         }
+
+        
     }
 }

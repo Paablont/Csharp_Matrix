@@ -10,7 +10,7 @@ namespace Csharp_MatrixProject
 {
     internal class Character
     {
-        public string name, cityName;
+        private string name, cityName;
         public int latitude, longitude, age, idCharacter, characterCount = 0;
         private double deathPerc;
 

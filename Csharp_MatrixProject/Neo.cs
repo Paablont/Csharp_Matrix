@@ -36,7 +36,7 @@ namespace Csharp_MatrixProject
                 {
                     if (board[i, j] != null)
                     {
-                        if (board[i, j].name.Equals("Neo"))
+                        if (board[i, j].Name.Equals("Neo"))
                         {
 
                             if (board[newLatitude, newLongitude] == null)
@@ -79,8 +79,7 @@ namespace Csharp_MatrixProject
             {
                 choseOne = true;
             }
-
-
+            
             return choseOne;
 
 
@@ -97,17 +96,18 @@ namespace Csharp_MatrixProject
                 {
                     if (board[i, j] != null)
                     {
-                        if (board[i, j].name.Equals("Neo"))
+                        if (board[i, j].Name.Equals("Neo"))
                         {
                             latNeo = i;
                             longNeo = j;
+
                             //Como no especifica si las diagonales, comprobaré solo arriba,abajo,izq,der
 
                             //Comprobamos posicion arriba
                             if (charNeoGenerate != 1)
                             {
-                                
-                                
+
+
                                 if (board[latNeo - 1, longNeo] == null)
                                 {
                                     board[latNeo - 1, longNeo] = charactersArray[j];
@@ -115,7 +115,7 @@ namespace Csharp_MatrixProject
                                 }
                             }
                             //Comprobamos posicion abajo
-                            if (charNeoGenerate != 1 )
+                            if (charNeoGenerate != 1)
                             {
                                 if (board[latNeo + 1, longNeo] == null)
                                 {
@@ -157,6 +157,29 @@ namespace Csharp_MatrixProject
 
 
             return board;
+        }
+
+        //Metodo para buscar a Neo
+        public static Neo obtainNeo(Character[,] board)
+        {
+            Neo neo = null;
+            bool found = false;
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.GetLength(1) && !found; j++)
+                {
+                    if (board[i, j] != null)
+                    {
+                        if (board[i, j] is Neo)
+                        {
+                            neo = (Neo)board[i, j];
+                            found = true;
+
+                        }
+                    }
+                }
+            }
+            return neo;
         }
 
 

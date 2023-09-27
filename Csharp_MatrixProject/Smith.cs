@@ -33,26 +33,26 @@ namespace Csharp_MatrixProject
 
 
         }
-        
+
         //Matar a un personaje (POR HACER)
         public Character[,] killCharacter(Character[,] board)
         {
-            
-                //mata al personaje que pille
-                for (int i = 0; i < board.GetLength(0); i++)
+
+            //mata al personaje que pille
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    for (int j = 0; j < board.GetLength(1); j++)
+                    if (board[i, j] != null)
                     {
-                    if (board[i,j] != null)
-                    {
-                        if(infectHability() > 5)
+                        if (infectHability() > 5)
                         {
                             board[i, j] = null;
                         }
                     }
-                    }
                 }
-           
+            }
+
 
             return board;
         }
@@ -61,40 +61,13 @@ namespace Csharp_MatrixProject
         public Character[,] smithMove(Character[,] board)
         {
             int neoRange;
-            Character neo = null, smith = null;
-            bool neoIsleft = false, neoIsUp = false; //Esto me servira para saber si Neo esta a la izq o derecha de Smith y arriba o abajo de él
-            //Calcular las casillas hasta neo(primero ver donde esta neo)
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                for (int j = 0; j < board.GetLength(1); j++)
-                {
-                    if (board[i, j] != null)
-                    {
-                        if (board[i, j].name.Equals("Neo"))
-                        {
+            Character neo = Neo.obtainNeo(board);
+            Character smith = obtainSmith(board);
+            //Esto me servira para saber si Neo esta a la izq o derecha de Smith y arriba o abajo de él
+            bool neoIsleft = false, neoIsUp = false;
+            //Calculamoss distancia
+            neoRange = Math.Max(Math.Abs(neo.Latitude - smith.Latitude), Math.Abs(neo.Longitude - smith.Longitude));
 
-                            neo = board[i, j];
-
-                        }
-                        if (board[i, j].name.Equals("Smith"))
-                        {
-
-                            smith = board[i, j];
-
-                        }
-
-                    }
-                }
-
-
-            }
-
-            if (neo != null && smith != null)
-            {
-                //Calculamos distancia
-                neoRange = Math.Max(Math.Abs(neo.Latitude - smith.Latitude), Math.Abs(neo.Longitude - smith.Longitude));
-
-            }
             //Vemos si neo esta a la arriba o abaj  y derecha o izq
             if (neo.Latitude < smith.Latitude)
             {
@@ -114,9 +87,8 @@ namespace Csharp_MatrixProject
                 {
                     if (board[i, j] != null)
                     {
-                        if (board[i, j].name.Equals("Smith"))
+                        if (board[i, j] is Smith)
                         {
-                            
                             //Neo esta arriba a la izquierda
                             if (neoIsleft && neoIsUp)
                             {
@@ -158,6 +130,29 @@ namespace Csharp_MatrixProject
                 }
             }
             return board;
+        }
+
+        //Metodo para buscar a smith en board
+        public static Smith obtainSmith(Character[,] board)
+        {
+            Smith sm = null;
+            bool found = false;
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.GetLength(1) && !found; j++)
+                {
+                    if (board[i, j] != null)
+                    {
+                        if (board[i, j] is Smith)
+                        {
+                            sm = (Smith)board[i, j];
+                            found = true;
+
+                        }
+                    }
+                }
+            }
+            return sm;
         }
     }
 }
