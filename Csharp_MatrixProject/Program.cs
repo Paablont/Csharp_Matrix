@@ -23,45 +23,37 @@ mf.matrixCreation(charactersArray, board);
 mf.boardPrint(board);
 
 Thread.Sleep(2000);
-//Pruebas de muerte de personajes
+//Pruebas de turno Personaje
 Console.WriteLine("");
 Console.WriteLine("");
 Console.WriteLine("");
-Console.WriteLine("");
+Console.WriteLine("Pruebas de turno personaje");
 
-c.charDeath(board);
+m.charactTurn(charactersArray, board);
 Thread.Sleep(2000);
 mf.boardPrint(board);
 
-//Pruebas de movimiento de Neo
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
+////Pruebas de turno neo
+//Console.WriteLine("");
+//Console.WriteLine("");
+//Console.WriteLine("");
+//Console.WriteLine("");
+//Console.WriteLine("Pruebas de turno neo");
 
-Thread.Sleep(2000);
-n.neoMove(board);
-mf.boardPrint(board);
+//m.neoTurn(charactersArray, board);
+//mf.boardPrint(board);
 
-//Pruebas de neo generando charactera
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
+////Pruebas de movimiento de Smith
+//Console.WriteLine("");
+//Console.WriteLine("");
+//Console.WriteLine("");
+//Console.WriteLine("");
+//Console.WriteLine("Pruebas de turno Smith");
 
-Thread.Sleep(2000);
-n.charNeoGenerate(charactersArray, board, n.theChosenOne());
-mf.boardPrint(board);
 
-//Pruebas de movimiento de Smith
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
-
-Thread.Sleep(2000);
-sm.smithMove(board);
-mf.boardPrint(board);
+//Thread.Sleep(2000);
+//m.smithTurn(charactersArray, board);
+//mf.boardPrint(board);
 
 
 

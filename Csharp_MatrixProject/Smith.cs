@@ -21,7 +21,7 @@ namespace Csharp_MatrixProject
 
         public int InfectRange { get { return infectRange; } set { infectRange = value; } }
 
-        //Función moverse, infectar,matar
+        //Generar capacidad de infectar
         public int infectHability()
         {
             int infecHab;
@@ -33,24 +33,31 @@ namespace Csharp_MatrixProject
 
 
         }
-
-        public Character[,] killCharacter(Character[,] board, int infecHab)
+        
+        //Matar a un personaje (POR HACER)
+        public Character[,] killCharacter(Character[,] board)
         {
-            if (infecHab > 5)
-            {
+            
                 //mata al personaje que pille
                 for (int i = 0; i < board.GetLength(0); i++)
                 {
                     for (int j = 0; j < board.GetLength(1); j++)
                     {
-
+                    if (board[i,j] != null)
+                    {
+                        if(infectHability() > 5)
+                        {
+                            board[i, j] = null;
+                        }
+                    }
                     }
                 }
-            }//No mata
+           
 
             return board;
         }
 
+        //Movimiento smith
         public Character[,] smithMove(Character[,] board)
         {
             int neoRange;
