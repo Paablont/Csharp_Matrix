@@ -11,8 +11,8 @@ namespace Csharp_MatrixProject
 
     {
         Character c;
-        private const int raws = 5;
-        private const int cols = 5;
+        private const int raws = 15;
+        private const int cols = 15;
         
 
         public Matrix()
@@ -32,7 +32,12 @@ namespace Csharp_MatrixProject
 
         //Metodos de turno de cada jugador(Neo, Smith, PersonajeGenerico
         //Quizás con el objeto de c pueda hacer is (instanceof) y según que clase sea hago X,Y o Z
+        //Metodo del turno de Neo
+        public Character[,] neoTurn(Char[,] board)
+        {
 
+            return board;
+        }
 
     }
 }

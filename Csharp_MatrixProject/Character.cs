@@ -58,7 +58,7 @@ namespace Csharp_MatrixProject
                         }
                         else
                         {
-                            board[i, j].deathPerc *= 0.1;
+                            board[i, j].deathPerc += 0.1;
                         }
                         
                     }

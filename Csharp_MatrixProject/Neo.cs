@@ -68,7 +68,7 @@ namespace Csharp_MatrixProject
         }
 
         //Funcion es elegido o no
-        public bool theChosenOne(Character[,] board)
+        public bool theChosenOne()
         {
             bool choseOne = false;
             Random rnd = new Random();
@@ -86,70 +86,74 @@ namespace Csharp_MatrixProject
 
         }
         //Funcion generar personaje adyadcente 
-        public Character[,] charNeoGenerate(Character[] charactersArray, Character[,] board)
+        public Character[,] charNeoGenerate(Character[] charactersArray, Character[,] board,bool elegido)
         {
             int latNeo, longNeo;
             int charNeoGenerate = 0;
-            for (int i = 0; i < board.GetLength(0); i++)
+            if (elegido)
             {
-                for (int j = 0; j < board.GetLength(1); j++)
+                for (int i = 0; i < board.GetLength(0); i++)
                 {
-                    if (board[i, j] != null)
+                    for (int j = 0; j < board.GetLength(1); j++)
                     {
-                        if (board[i, j].name.Equals("Neo"))
+                        if (board[i, j] != null)
                         {
-                            latNeo = i;
-                            longNeo = j;
-                            //Como no especifica si las diagonales, comprobaré solo arriba,abajo,izq,der
-
-                            //Comprobamos posicion arriba
-                            if (charNeoGenerate != 1)
+                            if (board[i, j].name.Equals("Neo"))
                             {
-                                if (board[latNeo - 1, longNeo] == null)
+                                latNeo = i;
+                                longNeo = j;
+                                //Como no especifica si las diagonales, comprobaré solo arriba,abajo,izq,der
+
+                                //Comprobamos posicion arriba
+                                if (charNeoGenerate != 1)
                                 {
-                                    board[latNeo - 1, longNeo] = charactersArray[j];
-                                    charNeoGenerate = 1;
+                                    if (board[latNeo - 1, longNeo] == null)
+                                    {
+                                        board[latNeo - 1, longNeo] = charactersArray[j];
+                                        charNeoGenerate = 1;
+                                    }
                                 }
-                            }
-                            //Comprobamos posicion abajo
-                            if (charNeoGenerate != 1)
-                            {
-                                if (board[latNeo + 1, longNeo] == null)
+                                //Comprobamos posicion abajo
+                                if (charNeoGenerate != 1)
                                 {
+                                    if (board[latNeo + 1, longNeo] == null)
+                                    {
 
-                                    board[latNeo + 1, longNeo] = charactersArray[j];
-                                    charNeoGenerate = 1;
+                                        board[latNeo + 1, longNeo] = charactersArray[j];
+                                        charNeoGenerate = 1;
+
+                                    }
+                                }
+                                //Comprobamos posicion izquierda
+                                if (charNeoGenerate != 1)
+                                {
+                                    if (board[latNeo, longNeo - 1] == null)
+                                    {
+
+                                        board[latNeo, longNeo - 1] = charactersArray[j];
+                                        charNeoGenerate = 1;
+                                    }
 
                                 }
-                            }
-                            //Comprobamos posicion izquierda
-                            if (charNeoGenerate != 1)
-                            {
-                                if (board[latNeo, longNeo - 1] == null)
+
+                                //Comprobamos posicion derecha
+                                if (charNeoGenerate != 1)
                                 {
+                                    if (board[latNeo, longNeo + 1] == null)
+                                    {
 
-                                    board[latNeo, longNeo - 1] = charactersArray[j];
-                                    charNeoGenerate = 1;
-                                }
-
-                            }
-
-                            //Comprobamos posicion derecha
-                            if (charNeoGenerate != 1)
-                            {
-                                if (board[latNeo, longNeo + 1] == null)
-                                {
-
-                                    board[latNeo, longNeo + 1] = charactersArray[j];
-                                    charNeoGenerate = 1;
+                                        board[latNeo, longNeo + 1] = charactersArray[j];
+                                        charNeoGenerate = 1;
 
 
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
+           
 
             return board;
         }

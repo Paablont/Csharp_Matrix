@@ -14,7 +14,7 @@ namespace Csharp_MatrixProject
         string[] cities = { "Nueva York", "Boston", "Baltimore", "Atlanta", "Detroit", "Dallas", "Denver" };
         int citiesInt, latitude, longitude, id, age;
         double deathPerc;
-        double infectRange;
+        int infectRange;
         Random rnd = new Random();
         public Smith smithCreation()
         {

@@ -4,6 +4,7 @@ using System.ComponentModel;
 CharacterFactory cf = new CharacterFactory();
 NeoFactory nf = new NeoFactory();
 Neo n = new Neo();
+Smith sm = new Smith();
 SmithFactory smf = new SmithFactory();
 Character[] charactersArray = new Character[200];
 Character c = new Character() ;
@@ -42,16 +43,26 @@ Thread.Sleep(2000);
 n.neoMove(board);
 mf.boardPrint(board);
 
-//Pruebas de neo generando character
+//Pruebas de neo generando charactera
 Console.WriteLine("");
 Console.WriteLine("");
 Console.WriteLine("");
 Console.WriteLine("");
 
 Thread.Sleep(2000);
-n.theChosenOne(board);
-n.charNeoGenerate(charactersArray, board);
+n.charNeoGenerate(charactersArray, board, n.theChosenOne());
 mf.boardPrint(board);
+
+//Pruebas de movimiento de Smith
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("");
+Console.WriteLine("");
+
+Thread.Sleep(2000);
+sm.smithMove(board);
+mf.boardPrint(board);
+
 
 
 
