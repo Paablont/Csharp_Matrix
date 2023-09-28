@@ -1,6 +1,6 @@
 ﻿-Que la matriz se pueda modificar de tamaño sin que de error
 
--Contador
+-Reloj de juego
 
 -Que el personaje al morir sea remplazado por otro (en su posicion respectiva al nuevo personaje)
 

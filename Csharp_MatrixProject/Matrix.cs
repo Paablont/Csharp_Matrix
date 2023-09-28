@@ -67,7 +67,7 @@ namespace Csharp_MatrixProject
         {
 
             Smith smith = Smith.obtainSmith(board);
-            smith.smithMove(board);            
+            smith.smithMove(board);
             //smith.killCharacter(board);
 
             return board;
