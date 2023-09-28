@@ -34,7 +34,7 @@ namespace Csharp_MatrixProject
 
         }
 
-        //Matar a un personaje 
+        //Matar a un personaje  (REVISAR)
         public Character[,] killCharacter(Character[,] board)
         {
             Random rn = new Random();

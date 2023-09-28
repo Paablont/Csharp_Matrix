@@ -41,11 +41,11 @@ namespace Csharp_MatrixProject
         public double DeathPerc { get { return deathPerc; } set { deathPerc = value; } }
 
 
-        //Morir
-        public Character[,] charDeath(List<Character> charactersArray, Character[,] board)
+        //Personaje muere por porcentaje (REVISAR)
+        public static Character[,] charDeath(List<Character> charactersArray, Character[,] board)
         {
             Character c;
-            int countcharacterDeath=0;
+            int countcharacterDeath = 0;
             for (int i = 0; i < board.GetLength(0); i++)
             {
                 for (int j = 0; j < board.GetLength(1); j++)
@@ -54,11 +54,10 @@ namespace Csharp_MatrixProject
                     {
                         if (board[i, j].DeathPerc > 0.7)
                         {
-                            board[i, j] = null ;
+                            board[i, j] = null;
                             countcharacterDeath++;
-                            board[i, j] = charactersArray[j];
-
-
+                            charactersArray.RemoveAt(0);
+                            board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[0];
                         }
                         else
                         {
@@ -70,7 +69,7 @@ namespace Csharp_MatrixProject
                     }
                 }
             }
-            Console.WriteLine("Han muerto {0} personajes", countcharacterDeath);
+
 
             return board;
         }

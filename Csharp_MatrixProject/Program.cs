@@ -20,7 +20,7 @@ static void startUp()
     
     Character[,] board;
     Character[,] charAlive = new Character[m.Raws, m.Cols];
-    List<Character> charactersArray = new List<Character>();
+    List<Character> charactersArray;
 
     //Metemos los personajes en un Array
     charactersArray = cf.charInArray(nf, smf);
@@ -31,26 +31,23 @@ static void startUp()
     Console.WriteLine("");
     Thread.Sleep(2000);
 
-    //Turno personaje
-    c.charDeath(charactersArray, board);
-    //m.charactTurn(board);
+    Console.WriteLine("TURNO PERSONAJE");
+    m.charactTurn(charactersArray,board);
     mf.boardPrint(board);
     Console.WriteLine("");
-    Thread.Sleep(2000);
+    Thread.Sleep(1000);
 
-    //Turno smith
-    //sm.smithMove(board);
-    //sm.killCharacter(board);
-    //mf.boardPrint(board);
-    m.smithTurn(board);
-    mf.boardPrint(board);
-    Console.WriteLine("");
-    Thread.Sleep(2000);
-
+    Console.WriteLine("TURNO NEO");
     m.neoTurn(charactersArray, board);
     mf.boardPrint(board);
     Console.WriteLine("");
-    Thread.Sleep(2000);
+    Thread.Sleep(1000);
+
+    Console.WriteLine("TURNO SMITH");
+    m.smithTurn(board);
+    mf.boardPrint(board);
+    Console.WriteLine("");
+    Thread.Sleep(1000);
 
 
 

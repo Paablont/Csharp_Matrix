@@ -21,6 +21,7 @@ namespace Csharp_MatrixProject
         public Character[,] matrixCreation(List<Character> charactersArray)
         {
             Character[,] board = new Character[m.Raws, m.Cols];
+            int contadorLista = 0;
             Random rnd = new Random();
             bool foundNeo = true;
             bool foundSmith = true;
@@ -29,17 +30,17 @@ namespace Csharp_MatrixProject
             para que meta X personajes. Si no controlo esto, los 200 personajes no caben en el tablero
             (Bueno si caben pero si el tablero fuera mas pequeño no)
              */
-            int charactersInMatrix = rnd.Next(50, charactersArray.Count - 2);
+            int charactersInMatrix = rnd.Next(50, 150);
 
             do
             {
-                for (int i = 0; i < board.GetLength(0); i++)
-                {
-
-                    for (int j = 0; j < charactersInMatrix; j++)
+                for (int j = 0; j < 50; j++)
                     {
 
-                        board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[j];
+                        board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[0];
+                        
+                        charactersArray.RemoveAt(0);
+                       
                         //if (board[i, j].Name.Equals("Neo"))
                         //{
                         //    foundNeo = true;
@@ -53,7 +54,7 @@ namespace Csharp_MatrixProject
                     }
 
 
-                }
+                
             } while (!foundNeo && !foundSmith);
             return board;
         }

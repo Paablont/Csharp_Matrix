@@ -33,7 +33,7 @@ namespace Csharp_MatrixProject
             get { return cols; }
         }
 
-       
+
 
         //Turno de Neo
         public Character[,] neoTurn(List<Character> charactersArray, Character[,] board)
@@ -50,15 +50,14 @@ namespace Csharp_MatrixProject
             {
                 neo.neoMove(board);
             }
-            
+
             return board;
         }
 
         //Turno del personaje (REVISAR)
         public Character[,] charactTurn(List<Character> charactersArray, Character[,] board)
         {
-            c.charDeath(charactersArray, board);
-            
+            Character.charDeath(charactersArray, board);
 
             return board;
 
@@ -68,11 +67,9 @@ namespace Csharp_MatrixProject
         {
 
             Smith smith = Smith.obtainSmith(board);
-            smith.smithMove(board);
-            smith.smithMove(board);
-            smith.smithMove(board);
+            smith.smithMove(board);            
             //smith.killCharacter(board);
-            
+
             return board;
         }
 

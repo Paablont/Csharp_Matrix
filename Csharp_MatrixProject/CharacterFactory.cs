@@ -42,11 +42,10 @@ namespace Csharp_MatrixProject
         public List<Character> charInArray( NeoFactory nf, SmithFactory smf)
         {
             List<Character> charactersArray = new List<Character>();
-
+            
             charactersArray.Add(nf.neoCreation());
             charactersArray.Add(smf.smithCreation());
-
-            for (int i = 2; i < 198; i++)
+            for (int i = 3; i < 200; i++)
             {
                 charactersArray.Add(charCreation());
                 
