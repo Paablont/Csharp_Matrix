@@ -74,7 +74,7 @@ namespace Csharp_MatrixProject
 
         }
         //Funcion generar personaje adyadcente 
-        public Character[,] charNeoGenerate(Character[] charactersArray, Character[,] board)
+        public Character[,] charNeoGenerate(List<Character> charactersArray, Character[,] board)
         {
 
             int charNeoGenerate = 0;

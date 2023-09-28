@@ -42,7 +42,7 @@ namespace Csharp_MatrixProject
 
 
         //Morir
-        public Character[,] charDeath(Character[] charactersArray, Character[,] board)
+        public Character[,] charDeath(List<Character> charactersArray, Character[,] board)
         {
             Character c;
             int countcharacterDeath=0;

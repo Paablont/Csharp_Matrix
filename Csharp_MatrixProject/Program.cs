@@ -20,7 +20,7 @@ static void startUp()
     
     Character[,] board;
     Character[,] charAlive = new Character[m.Raws, m.Cols];
-    Character[] charactersArray;
+    List<Character> charactersArray = new List<Character>();
 
     //Metemos los personajes en un Array
     charactersArray = cf.charInArray(nf, smf);

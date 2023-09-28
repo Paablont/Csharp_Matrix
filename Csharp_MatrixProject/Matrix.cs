@@ -36,7 +36,7 @@ namespace Csharp_MatrixProject
        
 
         //Turno de Neo
-        public Character[,] neoTurn(Character[] charactersArray, Character[,] board)
+        public Character[,] neoTurn(List<Character> charactersArray, Character[,] board)
         {
             Neo neo = Neo.obtainNeo(board);
 
@@ -55,7 +55,7 @@ namespace Csharp_MatrixProject
         }
 
         //Turno del personaje (REVISAR)
-        public Character[,] charactTurn(Character[] charactersArray, Character[,] board)
+        public Character[,] charactTurn(List<Character> charactersArray, Character[,] board)
         {
             c.charDeath(charactersArray, board);
             

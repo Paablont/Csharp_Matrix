@@ -18,7 +18,7 @@ namespace Csharp_MatrixProject
 
 
         //Metodo para crear la matrix
-        public Character[,] matrixCreation(Character[] charactersArray)
+        public Character[,] matrixCreation(List<Character> charactersArray)
         {
             Character[,] board = new Character[m.Raws, m.Cols];
             Random rnd = new Random();
@@ -29,7 +29,7 @@ namespace Csharp_MatrixProject
             para que meta X personajes. Si no controlo esto, los 200 personajes no caben en el tablero
             (Bueno si caben pero si el tablero fuera mas pequeño no)
              */
-            int charactersInMatrix = rnd.Next(50, charactersArray.Length - 2);
+            int charactersInMatrix = rnd.Next(50, charactersArray.Count - 2);
 
             do
             {
