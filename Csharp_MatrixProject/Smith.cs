@@ -8,18 +8,18 @@ namespace Csharp_MatrixProject
 {
     internal class Smith : Character
     {
-        int infectRange;
+        int infecCapacity;
 
-        public Smith(string name, string cityName, int latitude, int longitude, int age, int idCharacter, double deathPerc, int infectRange) : base(name, cityName, latitude, longitude, age, idCharacter, deathPerc)
+        public Smith(string name, string cityName, int latitude, int longitude, int age, int idCharacter, double deathPerc, int infecCapacity) : base(name, cityName, latitude, longitude, age, idCharacter, deathPerc)
         {
-            this.infectRange = infectRange;
+            this.infecCapacity = infecCapacity;
         }
         public Smith()
         {
 
         }
 
-        public int InfectRange { get { return infectRange; } set { infectRange = value; } }
+        public int InfectRange { get { return infecCapacity; } set { infecCapacity = value; } }
 
         //Generar capacidad de infectar
         public int infectHability()
@@ -34,20 +34,28 @@ namespace Csharp_MatrixProject
 
         }
 
-        //Matar a un personaje (POR HACER)
+        //Matar a un personaje 
         public Character[,] killCharacter(Character[,] board)
         {
+            Random rn = new Random();
+            int infectCapacity = infectHability();
+            Smith sm = obtainSmith(board);
+            sm.InfectRange = infectCapacity;
 
-            //mata al personaje que pille
-            for (int i = 0; i < board.GetLength(0); i++)
+            for (int i = 0;i<board.GetLength(0);i++)
             {
-                for (int j = 0; j < board.GetLength(1); j++)
+                for(int j = 0; j < board.GetLength(1); j++)
                 {
-                    if (board[i, j] != null)
+                    if (board[i,j] != null)
                     {
-                        if (infectHability() > 5)
+                        if (board[i,j] == board[sm.Latitude, sm.Longitude])
                         {
-                            board[i, j] = null;
+                            if(sm.InfectRange > 5)
+                            {
+                                Console.WriteLine("Smith ha matado a {0}", board[i, j].Name);
+                                board[i, j] = null;
+                            }
+                            
                         }
                     }
                 }
@@ -69,66 +77,63 @@ namespace Csharp_MatrixProject
             neoRange = Math.Max(Math.Abs(neo.Latitude - smith.Latitude), Math.Abs(neo.Longitude - smith.Longitude));
 
             //Vemos si neo esta a la arriba o abaj  y derecha o izq
-            if (neo.Latitude < smith.Latitude)
+            if (smith.Latitude >= neo.Latitude)
             {
                 neoIsUp = true;
-                if (neo.Longitude < smith.Longitude)
-                {
-                    neoIsleft = true;
-                }
+                
 
             }
+            if (smith.Longitude >= neo.Longitude)
+            {
+                neoIsleft = true;
+            }
+
             //Movemos a smith
             Random rnd = new Random();
 
-            for (int i = 0; i < board.GetLength(0); i++)
+            //Neo esta arriba a la izquierda
+            if (neoIsleft && neoIsUp)
             {
-                for (int j = 0; j < board.GetLength(1); j++)
-                {
-                    if (board[i, j] != null)
-                    {
-                        if (board[i, j] is Smith)
-                        {
-                            //Neo esta arriba a la izquierda
-                            if (neoIsleft && neoIsUp)
-                            {
-                                smith.Latitude -= 1;
-                                smith.Longitude -= 1;
-                                board[smith.Latitude, smith.Longitude] = smith;
-                                board[i, j] = null;
-                            }
-                            //Neo esta abajo a la izquierda
+                Console.WriteLine("Neo esta arriba a la izquierda");
+                board[smith.Latitude, smith.Longitude] = null;
+                smith.Latitude -= 1;
+                smith.Longitude -= 1;
+                board[smith.Latitude, smith.Longitude] = smith;
 
-                            if (neoIsleft && !neoIsUp)
-                            {
-                                smith.Latitude += 1;
-                                smith.Longitude -= 1;
-                                board[smith.Latitude, smith.Longitude] = smith;
-                                board[i, j] = null;
-                            }
-                            //Neo esta arriba a la derecha
-                            if (!neoIsleft && neoIsUp)
-                            {
-                                smith.Latitude -= 1;
-                                smith.Longitude += 1;
-                                board[smith.Latitude, smith.Longitude] = smith;
-                                board[i, j] = null;
-                            }
-                            //Neo esta abajo a la derecha
-                            if (!neoIsleft && !neoIsUp)
-                            {
-                                smith.Latitude += 1;
-                                smith.Longitude += 1;
-                                board[smith.Latitude, smith.Longitude] = smith;
-                                board[i, j] = null;
-                            }
-                        }
-
-
-                    }
-
-                }
             }
+            //Neo esta abajo a la izquierda
+
+            if (neoIsleft && !neoIsUp)
+            {
+                Console.WriteLine("Neo esta abajo a la izquierda");
+                board[smith.Latitude, smith.Longitude] = null;
+                smith.Latitude += 1;
+                smith.Longitude -= 1;
+                board[smith.Latitude, smith.Longitude] = smith;
+
+            }
+            //Neo esta arriba a la derecha
+            if (!neoIsleft && neoIsUp)
+            {
+                Console.WriteLine("Neo esta arriba a la derecha");
+                board[smith.Latitude, smith.Longitude] = null;
+                smith.Latitude -= 1;
+                smith.Longitude += 1;
+                board[smith.Latitude, smith.Longitude] = smith;
+
+            }
+            //Neo esta abajo a la derecha
+            if (!neoIsleft && !neoIsUp)
+            {
+                Console.WriteLine("Neo esta abajo a la derecha");
+                board[smith.Latitude, smith.Longitude] = null;
+                smith.Latitude += 1;
+                smith.Longitude += 1;
+                board[smith.Latitude, smith.Longitude] = smith;
+
+            }
+
+
             return board;
         }
 
@@ -143,10 +148,12 @@ namespace Csharp_MatrixProject
                 {
                     if (board[i, j] != null)
                     {
-                        if (board[i, j] is Smith)
+                        if (board[i, j].Name.Equals("Smith"))
                         {
                             sm = (Smith)board[i, j];
                             found = true;
+                            sm.Latitude = i;
+                            sm.Longitude = j;
 
                         }
                     }

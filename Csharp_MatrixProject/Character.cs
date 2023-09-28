@@ -42,28 +42,35 @@ namespace Csharp_MatrixProject
 
 
         //Morir
-        public Character[,] charDeath(Character[,] board)
+        public Character[,] charDeath(Character[] charactersArray, Character[,] board)
         {
-            Character[,] charactersAlive = new Character[board.GetLength(0), board.GetLength(1)];
-
+            Character c;
+            int countcharacterDeath=0;
             for (int i = 0; i < board.GetLength(0); i++)
             {
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    if (board[i,j] != null)
+                    if (board[i, j] != null)
                     {
-                        if (board[i,j].deathPerc > 0.7)
+                        if (board[i, j].DeathPerc > 0.7)
                         {
-                            board[i, j] = null;
+                            board[i, j] = null ;
+                            countcharacterDeath++;
+                            board[i, j] = charactersArray[j];
+
+
                         }
                         else
                         {
-                            board[i, j].deathPerc += 0.1;
+                            c = board[i, j];
+                            board[i, j].DeathPerc += 0.1;
+                            c.DeathPerc = board[i, j].DeathPerc;
                         }
-                        
+
                     }
                 }
             }
+            Console.WriteLine("Han muerto {0} personajes", countcharacterDeath);
 
             return board;
         }

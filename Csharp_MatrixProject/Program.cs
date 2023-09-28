@@ -1,62 +1,68 @@
 ﻿using Csharp_MatrixProject;
 using System.ComponentModel;
 
-CharacterFactory cf = new CharacterFactory();
-NeoFactory nf = new NeoFactory();
-Neo n = new Neo();
-Smith sm = new Smith();
-SmithFactory smf = new SmithFactory();
-Character[] charactersArray = new Character[200];
-Character c = new Character() ;
-Matrix m = new Matrix();
-MatrixFactory mf = new MatrixFactory();
-Character[,] board = new Character[m.Raws,m.Cols];
-Character[,] charAlive = new Character[m.Raws,m.Cols];
+startUp();
+
+
 
 //Agrega los personajes al array
-cf.charInArray(charactersArray,nf, smf);
+static void startUp()
+{
+    Character c = new Character();
+    Neo n = new Neo();
+    Smith sm = new Smith();
+    Matrix m = new Matrix();
+    
+    CharacterFactory cf = new CharacterFactory();
+    NeoFactory nf = new NeoFactory();
+    SmithFactory smf = new SmithFactory();
+    MatrixFactory mf = new MatrixFactory();
+    
+    Character[,] board;
+    Character[,] charAlive = new Character[m.Raws, m.Cols];
+    Character[] charactersArray;
 
-//cf.imprimirCharacters(charactersArray);
+    //Metemos los personajes en un Array
+    charactersArray = cf.charInArray(nf, smf);
 
-//Distribuir los personajes por el tablero
-mf.matrixCreation(charactersArray, board);
-mf.boardPrint(board);
+    //Los repartimos por el tablero
+    board = mf.matrixCreation(charactersArray);
+    mf.boardPrint(board);
+    Console.WriteLine("");
+    Thread.Sleep(2000);
 
-Thread.Sleep(2000);
-//Pruebas de turno Personaje
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("Pruebas de muerte personaje");
+    //Turno personaje
+    c.charDeath(charactersArray, board);
+    //m.charactTurn(board);
+    mf.boardPrint(board);
+    Console.WriteLine("");
+    Thread.Sleep(2000);
 
-c.charDeath(board);
-Thread.Sleep(2000);
-mf.boardPrint(board);
+    //Turno smith
+    //sm.smithMove(board);
+    //sm.killCharacter(board);
+    //mf.boardPrint(board);
+    m.smithTurn(board);
+    mf.boardPrint(board);
+    Console.WriteLine("");
+    Thread.Sleep(2000);
 
-//Pruebas de turno neo
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("Pruebas de turno neo");
+    m.neoTurn(charactersArray, board);
+    mf.boardPrint(board);
+    Console.WriteLine("");
+    Thread.Sleep(2000);
 
-m.neoTurn(charactersArray, board);
-mf.boardPrint(board);
 
-//Pruebas de movimiento de Smith
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("");
-Console.WriteLine("Pruebas de mov Smith");
 
-Thread.Sleep(2000);
-sm.smithMove(board);
-mf.boardPrint(board);
-Console.WriteLine("");
-sm.smithMove(board);
-mf.boardPrint(board);
-Console.WriteLine("");
+
+
+
+
+}
+
+
+
+
 
 
 

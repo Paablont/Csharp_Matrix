@@ -39,8 +39,9 @@ namespace Csharp_MatrixProject
 
         }
 
-        public Character[] charInArray(Character[] charactersArray, NeoFactory nf, SmithFactory smf)
+        public Character[] charInArray( NeoFactory nf, SmithFactory smf)
         {
+            Character[] charactersArray = new Character[200];
            
            charactersArray[0] = nf.neoCreation();
             charactersArray[1] = smf.smithCreation();

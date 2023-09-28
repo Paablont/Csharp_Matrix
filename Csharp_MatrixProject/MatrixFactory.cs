@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Csharp_MatrixProject
 {
-    
+
     internal class MatrixFactory
     {
 
@@ -18,18 +18,19 @@ namespace Csharp_MatrixProject
 
 
         //Metodo para crear la matrix
-        public Character[,] matrixCreation(Character[] charactersArray, Character[,] board)
+        public Character[,] matrixCreation(Character[] charactersArray)
         {
+            Character[,] board = new Character[m.Raws, m.Cols];
             Random rnd = new Random();
-            bool foundNeo = false;
-            bool foundSmith = false;
+            bool foundNeo = true;
+            bool foundSmith = true;
             /*
             He creado un int con random que genere un numero del 1 al tamaño del tablero
             para que meta X personajes. Si no controlo esto, los 200 personajes no caben en el tablero
             (Bueno si caben pero si el tablero fuera mas pequeño no)
              */
-            int charactersInMatrix = rnd.Next(50, charactersArray.Length-2);
-            if () { }
+            int charactersInMatrix = rnd.Next(50, charactersArray.Length - 2);
+
             do
             {
                 for (int i = 0; i < board.GetLength(0); i++)
@@ -39,38 +40,20 @@ namespace Csharp_MatrixProject
                     {
 
                         board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[j];
-                        
-                    }
+                        //if (board[i, j].Name.Equals("Neo"))
+                        //{
+                        //    foundNeo = true;
+                        //}
+                        //if (board[i, j].Name.Equals("Neo"))
+                        //{
+                        //    foundSmith = true;
+                        //}
 
-                    break;
-                }
-                foreach (Character c in board)
-                {
-                    if (c != null)
-                    {
-                        if (c.Name.Equals("Neo"))
-                        {
-                            foundNeo = true;
-                            break;
-                        }
+
                     }
 
 
                 }
-
-                foreach (Character c in board)
-                {
-                    if (c != null)
-                    {
-                        if (c.Name.Equals("Smith"))
-                        {
-                            foundSmith = true;
-                            break;
-                        }
-                    }
-                }
-
-
             } while (!foundNeo && !foundSmith);
             return board;
         }
@@ -115,6 +98,6 @@ namespace Csharp_MatrixProject
 
         }
 
-        
+
     }
 }

@@ -1,0 +1,9 @@
+﻿-Comprobar que meta a Neo y Smith si o si (sino vuelve a generar la matriz)
+
+-Que Neo añada un personaje, no que meta otro Neo
+
+-Que la matriz se pueda modificar de tamaño sin que de error
+
+-Contador
+
+-Metodo de Smith mata a personaje
