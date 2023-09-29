@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Csharp_MatrixProject
         public Character[,] neoMove(Character[,] board)
         {
             Character c;
+            Smith smith = Smith.obtainSmith(board);
             Neo neo = obtainNeo(board);
             Random rnd = new Random();
             int newLatitude, newLongitude;
@@ -34,10 +36,20 @@ namespace Csharp_MatrixProject
             if (board[newLatitude, newLongitude] == null)
             {
                 //Vacio la posicion vieja de neo y lo relleno con la nueva
-                board[neo.Latitude, neo.Longitude] = null;
-                neo.Latitude = newLatitude; 
-                neo.Longitude = newLongitude;
-                board[newLatitude, newLongitude] = neo;
+                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
+                {
+                    neo.Latitude = newLatitude;
+                    neo.Longitude = newLongitude;
+                    board[newLatitude, newLongitude] = neo;
+                }
+                else
+                {
+                    board[neo.Latitude, neo.Longitude] = null;
+                    neo.Latitude = newLatitude;
+                    neo.Longitude = newLongitude;
+                    board[newLatitude, newLongitude] = neo;
+                }
+                
                 //La antigua pos de neo la dejo vacia
                 
 

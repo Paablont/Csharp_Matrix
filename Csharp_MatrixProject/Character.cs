@@ -44,36 +44,56 @@ namespace Csharp_MatrixProject
         //Personaje muere por porcentaje (REVISAR)
         public static Character[,] charDeath(List<Character> charactersArray, Character[,] board)
         {
-            Character c;
-            int countcharacterDeath = 0;
+            Character c = obtainCharacter(board);
+            if (!(c is Neo && c is Smith))
+            {
+                if (c.DeathPerc > 0.7)
+                {
+                    board[c.Latitude, c.Longitude] = null;
+                    if (board[charactersArray[0].Latitude, charactersArray[0].Longitude] == null)
+                    {
+                        board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[0];
+                        charactersArray.RemoveAt(0);
+                    }
+
+                }
+                else
+                {
+
+                    c.DeathPerc += 0.1;
+
+                }
+            }
+
+            return board;
+        }
+
+
+        public static Character obtainCharacter(Character[,] board)
+        {
+            Character c = null;
+            bool found = false;
             for (int i = 0; i < board.GetLength(0); i++)
             {
-                for (int j = 0; j < board.GetLength(1); j++)
+                for (int j = 0; j < board.GetLength(1) && !found; j++)
                 {
-                    if (board[i, j] != null)
+                    if (board[i, j] != null && !board[i, j].Name.Equals("Smith") && !board[i, j].Name.Equals("Neo"))
                     {
-                        if (board[i, j].DeathPerc > 0.7)
-                        {
-                            board[i, j] = null;
-                            countcharacterDeath++;
-                            charactersArray.RemoveAt(0);
-                            board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[0];
-                        }
-                        else
-                        {
+                        
                             c = board[i, j];
-                            board[i, j].DeathPerc += 0.1;
-                            c.DeathPerc = board[i, j].DeathPerc;
-                        }
+                            found = true;
+                            c.Latitude = i;
+                            c.Longitude = j;
 
+                        
                     }
                 }
             }
 
 
-            return board;
-        }
+            return c;
 
+        }
         public override string? ToString()
         {
             return

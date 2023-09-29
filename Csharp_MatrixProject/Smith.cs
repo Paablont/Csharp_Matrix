@@ -42,20 +42,20 @@ namespace Csharp_MatrixProject
             Smith sm = obtainSmith(board);
             sm.InfectRange = infectCapacity;
 
-            for (int i = 0;i<board.GetLength(0);i++)
+            for (int i = 0; i < board.GetLength(0); i++)
             {
-                for(int j = 0; j < board.GetLength(1); j++)
+                for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    if (board[i,j] != null)
+                    if (board[i, j] != null)
                     {
-                        if (board[i,j] == board[sm.Latitude, sm.Longitude])
+                        if (board[i, j] == board[sm.Latitude, sm.Longitude] && !board[i, j].Name.Equals("Neo"))
                         {
-                            if(sm.InfectRange > 5)
+                            if (sm.InfectRange > 5)
                             {
                                 Console.WriteLine("Smith ha matado a {0}", board[i, j].Name);
                                 board[i, j] = null;
                             }
-                            
+
                         }
                     }
                 }
@@ -76,11 +76,12 @@ namespace Csharp_MatrixProject
             //Calculamoss distancia
             neoRange = Math.Max(Math.Abs(neo.Latitude - smith.Latitude), Math.Abs(neo.Longitude - smith.Longitude));
 
+
             //Vemos si neo esta a la arriba o abaj  y derecha o izq
             if (smith.Latitude >= neo.Latitude)
             {
                 neoIsUp = true;
-                
+
 
             }
             if (smith.Longitude >= neo.Longitude)
@@ -98,7 +99,12 @@ namespace Csharp_MatrixProject
                 board[smith.Latitude, smith.Longitude] = null;
                 smith.Latitude -= 1;
                 smith.Longitude -= 1;
-                board[smith.Latitude, smith.Longitude] = smith;
+                if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                {
+                    board[smith.Latitude, smith.Longitude] = smith;
+                }
+
+
 
             }
             //Neo esta abajo a la izquierda
@@ -109,7 +115,10 @@ namespace Csharp_MatrixProject
                 board[smith.Latitude, smith.Longitude] = null;
                 smith.Latitude += 1;
                 smith.Longitude -= 1;
-                board[smith.Latitude, smith.Longitude] = smith;
+                if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                {
+                    board[smith.Latitude, smith.Longitude] = smith;
+                }
 
             }
             //Neo esta arriba a la derecha
@@ -119,7 +128,10 @@ namespace Csharp_MatrixProject
                 board[smith.Latitude, smith.Longitude] = null;
                 smith.Latitude -= 1;
                 smith.Longitude += 1;
-                board[smith.Latitude, smith.Longitude] = smith;
+                if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                {
+                    board[smith.Latitude, smith.Longitude] = smith;
+                }
 
             }
             //Neo esta abajo a la derecha
@@ -129,9 +141,14 @@ namespace Csharp_MatrixProject
                 board[smith.Latitude, smith.Longitude] = null;
                 smith.Latitude += 1;
                 smith.Longitude += 1;
-                board[smith.Latitude, smith.Longitude] = smith;
+                if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                {
+                    board[smith.Latitude, smith.Longitude] = smith;
+                }
 
             }
+
+
 
 
             return board;

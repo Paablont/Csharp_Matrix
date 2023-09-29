@@ -1,7 +1,5 @@
 ﻿-Que la matriz se pueda modificar de tamaño sin que de error
 
--Reloj de juego
+-Metodo smith mata o no a un personaje
 
--Que el personaje al morir sea remplazado por otro (en su posicion respectiva al nuevo personaje)
-
--Metodo de Smith mata a personaje
+-Personaje mata a neo y smith
