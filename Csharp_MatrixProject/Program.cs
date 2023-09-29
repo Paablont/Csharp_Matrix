@@ -12,7 +12,8 @@ static void startUp()
     Neo n = new Neo();
     Smith sm = new Smith();
     Matrix m = new Matrix();
-    
+    bool endGame = false;
+    int seconds = 0;
     CharacterFactory cf = new CharacterFactory();
     NeoFactory nf = new NeoFactory();
     SmithFactory smf = new SmithFactory();
@@ -31,29 +32,35 @@ static void startUp()
     Console.WriteLine("");
     Thread.Sleep(2000);
 
-    Console.WriteLine("TURNO PERSONAJE");
-    m.charactTurn(charactersArray,board);
-    mf.boardPrint(board);
-    Console.WriteLine("");
-    Thread.Sleep(1000);
+    while (seconds <= 20)
+    {
+        seconds++;
 
-    Console.WriteLine("TURNO NEO");
-    m.neoTurn(charactersArray, board);
-    mf.boardPrint(board);
-    Console.WriteLine("");
-    Thread.Sleep(1000);
-
-    Console.WriteLine("TURNO SMITH");
-    m.smithTurn(board);
-    mf.boardPrint(board);
-    Console.WriteLine("");
-    Thread.Sleep(1000);
+        if (seconds % 1 == 0)
+        {
+            Console.WriteLine("TURNO PERSONAJE");
+            m.charactTurn(charactersArray, board);
+            mf.boardPrint(board);
+            Console.WriteLine("");
 
 
-
-
-
-
+        }
+        if (seconds % 2 == 0)
+        {
+            Console.WriteLine("TURNO SMITH");
+            m.smithTurn(board);
+            mf.boardPrint(board);
+            Console.WriteLine("");
+        }
+        if (seconds % 5 == 0)
+        {
+            Console.WriteLine("TURNO NEO");
+            m.neoTurn(charactersArray, board);
+            mf.boardPrint(board);
+            Console.WriteLine("");
+        }
+        Thread.Sleep(1000);
+    }
 
 }
 

@@ -42,7 +42,6 @@ namespace Csharp_MatrixProject
 
             if (neo.theChosenOne())
             {
-                Console.WriteLine("ELEGIDO");
                 neo.charNeoGenerate(charactersArray, board);
                 neo.neoMove(board);
             }
