@@ -1,6 +1,8 @@
 <h1>MATRIX</h1>
 
-Mi primer proyecto con Csharp. Simulación de 20 segundos de una persecución entre <b>Neo</b> y <b>Smith</b> en la <b>Matrix</b> con <b>Ciudadanos</b>
+Mi primer proyecto con Csharp para Desarrollo de Interfaces en el CFGS Desarrollo de Aplicaciones Multiplataforma. 
+
+Simulación de 20 segundos de una persecución entre <b>Neo</b> y <b>Smith</b> en la <b>Matrix</b> con <b>Ciudadanos</b>
 
 <b>Cada segundo:</b> Los <b>Ciudadanos</b> se evaluan por su atributo de porcentaje de muerte y el que supere el 70% se muere (se saca de la <b>Matrix</b>) y se reemplaza por otro nuevo en una posición distinta. 
 
