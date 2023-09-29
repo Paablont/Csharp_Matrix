@@ -1,5 +1,3 @@
 ﻿-Que la matriz se pueda modificar de tamaño sin que de error
 
--Que genere si o si a Neo y Smith de primeras SIEMPRE
 
--Comprobar mas cosas

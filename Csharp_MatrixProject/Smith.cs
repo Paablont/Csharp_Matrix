@@ -8,7 +8,7 @@ namespace Csharp_MatrixProject
 {
     internal class Smith : Character
     {
-        int infecCapacity;
+        int infecCapacity; //Sin uso en el programa
 
         public Smith(string name, string cityName, int latitude, int longitude, int age, int idCharacter, double deathPerc, int infecCapacity) : base(name, cityName, latitude, longitude, age, idCharacter, deathPerc)
         {
@@ -21,20 +21,149 @@ namespace Csharp_MatrixProject
 
         public int InfectRange { get { return infecCapacity; } set { infecCapacity = value; } }
 
-        //Generar capacidad de infectar
-        public int infectHability()
+        //Metodo de movimiento de Smith
+        public Character[,] smithMove(Character[,] board)
         {
-            int infecHab;
+            int neoRange;
+            Character neo = Matrix.obtainNeo(board);
+            Character smith = Matrix.obtainSmith(board);
+
+            //Esto me servira para saber si Neo esta a la izq o derecha de Smith y arriba o abajo de él
+            bool neoIsleft = false, neoIsUp = false;
+
+            //Calculamoss distancia de Smith hasta Neo
+            neoRange = Math.Max(Math.Abs(neo.Latitude - smith.Latitude), Math.Abs(neo.Longitude - smith.Longitude));
+
+            //Vemos si neo esta a la arriba o abaj  y derecha o izq
+            if (smith.Latitude >= neo.Latitude)
+            {
+                neoIsUp = true;
+
+
+            }
+            if (smith.Longitude >= neo.Longitude)
+            {
+                neoIsleft = true;
+            }
+
+            //Movemos a smith
             Random rnd = new Random();
 
-            infecHab = rnd.Next(1, 10);
+            //Neo esta arriba a la izquierda
+            if (neoIsleft && neoIsUp)
+            {
+                //Console.WriteLine("Neo esta arriba a la izquierda");
+                board[smith.Latitude, smith.Longitude] = null;
+                smith.Latitude -= 1;
+                smith.Longitude -= 1;
+                //Si la pos de smith es igual a la de neo se vuelve donde estaba
+                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
+                {
+                    smith.Latitude += 1;
+                    smith.Longitude += 1;
+                    board[smith.Latitude, smith.Longitude] = smith;
+                }
+                else
+                {
+                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                    {
+                        board[smith.Latitude, smith.Longitude] = smith;
+                    }
+                }
 
-            return infecHab;
 
 
+
+            }
+            //Neo esta abajo a la izquierda
+            if (neoIsleft && !neoIsUp)
+            {
+                //Console.WriteLine("Neo esta abajo a la izquierda");
+                board[smith.Latitude, smith.Longitude] = null;
+                smith.Latitude += 1;
+                smith.Longitude -= 1;
+                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
+                {
+
+                    smith.Latitude -= 1;
+                    smith.Longitude += 1;
+                    board[smith.Latitude, smith.Longitude] = smith;
+                }
+                else
+                {
+                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                    {
+                        board[smith.Latitude, smith.Longitude] = smith;
+                    }
+                }
+
+            }
+
+            //Neo esta arriba a la derecha
+            if (!neoIsleft && neoIsUp)
+            {
+                //Console.WriteLine("Neo esta arriba a la derecha");
+                board[smith.Latitude, smith.Longitude] = null;
+                smith.Latitude -= 1;
+                smith.Longitude += 1;
+                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
+                {
+
+                    smith.Latitude += 1;
+                    smith.Longitude -= 1;
+                    board[smith.Latitude, smith.Longitude] = smith;
+                }
+                else
+                {
+                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                    {
+                        board[smith.Latitude, smith.Longitude] = smith;
+                    }
+                }
+
+            }
+            //Neo esta abajo a la derecha
+            if (!neoIsleft && !neoIsUp)
+            {
+                //Console.WriteLine("Neo esta abajo a la derecha");
+                board[smith.Latitude, smith.Longitude] = null;
+                smith.Latitude += 1;
+                smith.Longitude += 1;
+                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
+                {
+
+                    smith.Latitude -= 1;
+                    smith.Longitude -= 1;
+                    board[smith.Latitude, smith.Longitude] = smith;
+                }
+                else
+                {
+                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                    {
+                        board[smith.Latitude, smith.Longitude] = smith;
+                    }
+                }
+
+            }
+            return board;
         }
 
-        ////Matar a un personaje  (ESTE METODO DIJIMOS QUE NO SE HACE. SMITH MATA SI O SI AL PERSONAJE SI PASA POR EL)
+        //Metodo para generar una capacidad para infectar (sin uso)
+
+        //public int infectHability()
+        //{
+        //    int infecHab;
+        //    Random rnd = new Random();
+
+        //    infecHab = rnd.Next(1, 10);
+
+        //    return infecHab;
+        //}
+
+
+
+        //Metodo para que Smith mate a un Character  (sin uso) 
+
         //public Character[,] killCharacter(Character[,] board)
         //{
         //    Random rn = new Random();
@@ -64,131 +193,6 @@ namespace Csharp_MatrixProject
 
         //    return board;
         //}
-
-        //Movimiento smith
-        public Character[,] smithMove(Character[,] board)
-        {
-            int neoRange;
-            Character neo = Matrix.obtainNeo(board);
-            Character smith = Matrix.obtainSmith(board);
-            //Esto me servira para saber si Neo esta a la izq o derecha de Smith y arriba o abajo de él
-            bool neoIsleft = false, neoIsUp = false;
-            //Calculamoss distancia
-            neoRange = Math.Max(Math.Abs(neo.Latitude - smith.Latitude), Math.Abs(neo.Longitude - smith.Longitude));
-
-            //Vemos si neo esta a la arriba o abaj  y derecha o izq
-            if (smith.Latitude >= neo.Latitude)
-            {
-                neoIsUp = true;
-
-
-            }
-            if (smith.Longitude >= neo.Longitude)
-            {
-                neoIsleft = true;
-            }
-
-            //Movemos a smith
-            Random rnd = new Random();
-
-            //Neo esta arriba a la izquierda
-            if (neoIsleft && neoIsUp)
-            {
-                Console.WriteLine("Neo esta arriba a la izquierda");
-                board[smith.Latitude, smith.Longitude] = null;
-                smith.Latitude -= 1;
-                smith.Longitude -= 1;
-                //Si la pos de smith es igual a la de neo 
-                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
-                {
-                    smith.Latitude += 1;
-                    smith.Longitude += 1;
-                    board[smith.Latitude, smith.Longitude] = smith;
-                }
-                else
-                {
-                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
-                    {
-                        board[smith.Latitude, smith.Longitude] = smith;
-                    }
-                }
-
-
-
-
-            }
-            //Neo esta abajo a la izquierda
-
-            if (neoIsleft && !neoIsUp)
-            {
-                Console.WriteLine("Neo esta abajo a la izquierda");
-                board[smith.Latitude, smith.Longitude] = null;
-                smith.Latitude += 1;
-                smith.Longitude -= 1;
-                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
-                {
-
-                    smith.Latitude -= 1;
-                    smith.Longitude += 1;
-                    board[smith.Latitude, smith.Longitude] = smith;
-                }
-                else
-                {
-                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
-                    {
-                        board[smith.Latitude, smith.Longitude] = smith;
-                    }
-                }
-
-            }
-            //Neo esta arriba a la derecha
-            if (!neoIsleft && neoIsUp)
-            {
-                Console.WriteLine("Neo esta arriba a la derecha");
-                board[smith.Latitude, smith.Longitude] = null;
-                smith.Latitude -= 1;
-                smith.Longitude += 1;
-                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
-                {
-
-                    smith.Latitude += 1;
-                    smith.Longitude -= 1;
-                    board[smith.Latitude, smith.Longitude] = smith;
-                }
-                else
-                {
-                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
-                    {
-                        board[smith.Latitude, smith.Longitude] = smith;
-                    }
-                }
-
-            }
-            //Neo esta abajo a la derecha
-            if (!neoIsleft && !neoIsUp)
-            {
-                Console.WriteLine("Neo esta abajo a la derecha");
-                board[smith.Latitude, smith.Longitude] = null;
-                smith.Latitude += 1;
-                smith.Longitude += 1;
-                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
-                {
-
-                    smith.Latitude -= 1;
-                    smith.Longitude -= 1;
-                    board[smith.Latitude, smith.Longitude] = smith;
-                }
-                else
-                {
-                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
-                    {
-                        board[smith.Latitude, smith.Longitude] = smith;
-                    }
-                }
-
-            }
-            return board;
-        }
 
     }
 }

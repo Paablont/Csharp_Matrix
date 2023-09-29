@@ -9,7 +9,6 @@ namespace Csharp_MatrixProject
     internal class SmithFactory
     {
         Smith n;
-
         string name = "Smith";
         string[] cities = { "Nueva York", "Boston", "Baltimore", "Atlanta", "Detroit", "Dallas", "Denver" };
         int citiesInt, latitude, longitude, id, age;

@@ -34,13 +34,21 @@ namespace Csharp_MatrixProject
             get { return cols; }
         }
 
+        //Turno del personaje
+        public Character[,] charactTurn(List<Character> charactersArray, Character[,] board)
+        {
+            Character.charDeath(charactersArray, board);
 
+            return board;
 
-        //Turno de Neo
+        }
+
+        //Metodo de turno de Neo
         public Character[,] neoTurn(List<Character> charactersArray, Character[,] board)
         {
             Neo neo = Matrix.obtainNeo(board);
 
+            //Compruebo si es el elegido para que genere un nuevo personaje cerca de el o no
             if (neo.theChosenOne())
             {
                 neo.charNeoGenerate(charactersArray, board);
@@ -54,15 +62,8 @@ namespace Csharp_MatrixProject
             return board;
         }
 
-        //Turno del personaje (REVISAR)
-        public Character[,] charactTurn(List<Character> charactersArray, Character[,] board)
-        {
-            Character.charDeath(charactersArray, board);
-
-            return board;
-
-        }
-
+        
+        //Metodo de turno de Smith
         public Character[,] smithTurn(Character[,] board)
         {
 
@@ -72,7 +73,9 @@ namespace Csharp_MatrixProject
 
             return board;
         }
-        //Metodo para buscar a Neo
+
+
+        //Metodo para buscar a Neo en board
         public static Neo obtainNeo(Character[,] board)
         {
             Neo neo = null;
@@ -98,7 +101,7 @@ namespace Csharp_MatrixProject
         }
 
 
-        //Metodo para buscar a smith en board
+        //Metodo para buscar a Smith en board
         public static Smith obtainSmith(Character[,] board)
         {
             Smith sm = null;

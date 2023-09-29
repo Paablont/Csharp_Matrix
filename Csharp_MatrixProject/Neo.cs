@@ -30,12 +30,13 @@ namespace Csharp_MatrixProject
             Neo neo = Matrix.obtainNeo(board);
             Random rnd = new Random();
             int newLatitude, newLongitude;
-            newLatitude = rnd.Next(1, board.GetLength(0));
-            newLongitude = rnd.Next(1, board.GetLength(1));
+            newLatitude = rnd.Next(1, board.GetLength(0)-1);
+            newLongitude = rnd.Next(1, board.GetLength(1)-1);
 
+            //Compruebo que la posicion nueva donde va a ir Neo esta vacia y si no hay que hacer intercambio
             if (board[newLatitude, newLongitude] == null)
             {
-                //Vacio la posicion vieja de neo y lo relleno con la nueva
+                
                 if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
                 {
                     neo.Latitude = newLatitude;
@@ -50,13 +51,14 @@ namespace Csharp_MatrixProject
                     board[newLatitude, newLongitude] = neo;
                 }
 
-                //La antigua pos de neo la dejo vacia
+                
 
 
             }
+            
             else
             {
-                //Cojo el obj del personaje de la nueva pos
+                //Cojo el obj del Character de la nueva pos y lo cambio con Neo
                 c = board[newLatitude, newLongitude];
                 c.Latitude = newLatitude;
                 c.Longitude = newLongitude;

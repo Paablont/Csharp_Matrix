@@ -17,37 +17,51 @@ namespace Csharp_MatrixProject
 
 
 
-        //Metodo para crear la matrix
+        //Metodo para crear la matrix (board)
         public Character[,] matrixCreation(List<Character> charactersArray)
         {
             Character[,] board = new Character[m.Raws, m.Cols];
             int contadorLista = 0;
             Random rnd = new Random();
-            bool foundNeo = true;
-            bool foundSmith = true;
-            /*
-            He creado un int con random que genere un numero del 1 al tamaño del tablero
-            para que meta X personajes. Si no controlo esto, los 200 personajes no caben en el tablero
-            (Bueno si caben pero si el tablero fuera mas pequeño no)
-             */
-            int charactersInMatrix = rnd.Next(1, 10);
-
+            bool foundNeo = false;
+            bool foundSmith = false;
             do
             {
                 for (int j = 0; j < charactersArray.Count; j++)
-                    {
+                {
 
-                        board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[0];
-                        
-                        charactersArray.RemoveAt(0);
-                    
+                    board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[0];
+
+                    charactersArray.RemoveAt(0);
+
                 }
 
-                
+                //Compruebo que Neo ha entrado correctamente en la matriz
+                for (int i = 0; i < board.GetLength(0); i++)
+                {
+                    for (int j = 0; j < board.GetLength(1); j++)
+                    {
+                        if (board[i, j] != null && board[i, j] is Neo)
+                        {
+                            foundNeo = true;
+                        }
+                    }
+                }
 
+                //Compruebo que Smith ha entrado correctamente en la matriz
+                for (int i = 0; i < board.GetLength(0); i++)
+                {
+                    for (int j = 0; j < board.GetLength(1); j++)
+                    {
+                        if (board[i, j] != null && board[i, j] is Smith)
+                        {
+                            foundSmith = true;
+                        }
+                    }
+                }
 
-                
             } while (!foundNeo && !foundSmith);
+
             return board;
         }
 

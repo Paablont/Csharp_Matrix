@@ -25,10 +25,9 @@ namespace Csharp_MatrixProject
         {
         }
 
-        //Creacion de personaje
+        //Metodo para crear Character
         public Character charCreation()
         {
-            int contadorNeo = 0, contadorSmith = 0;
             namesInt = rnd.Next(1, names.Length);
             citiesInt = rnd.Next(1, cities.Length);
             age = rnd.Next(1, 90);
@@ -41,6 +40,7 @@ namespace Csharp_MatrixProject
 
         }
 
+        //Metodo para meter en una lista los Characters para posteriormente enviarlos a la matrix(board)
         public List<Character> charInArray( NeoFactory nf, SmithFactory smf)
         {
             List<Character> charactersArray = new List<Character>();

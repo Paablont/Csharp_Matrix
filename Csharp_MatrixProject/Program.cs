@@ -32,7 +32,9 @@ static void startUp()
     Console.WriteLine("");
     Thread.Sleep(2000);
 
-   
+
+    
+
     
     while (seconds <= 20)
     {

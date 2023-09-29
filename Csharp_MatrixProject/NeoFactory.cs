@@ -17,6 +17,8 @@ namespace Csharp_MatrixProject
         double deathPerc;
         bool elegido;
         Random rnd = new Random();
+
+        //Metodo para crear a Neo
         public Neo neoCreation()
         {
             int contadorNeo = 0, contadorSmith = 0;            
