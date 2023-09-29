@@ -30,28 +30,20 @@ namespace Csharp_MatrixProject
             para que meta X personajes. Si no controlo esto, los 200 personajes no caben en el tablero
             (Bueno si caben pero si el tablero fuera mas pequeño no)
              */
-            int charactersInMatrix = rnd.Next(50, 150);
+            int charactersInMatrix = rnd.Next(1, 10);
 
             do
             {
-                for (int j = 0; j < 50; j++)
+                for (int j = 0; j < charactersArray.Count; j++)
                     {
 
                         board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[0];
                         
                         charactersArray.RemoveAt(0);
-                       
-                        //if (board[i, j].Name.Equals("Neo"))
-                        //{
-                        //    foundNeo = true;
-                        //}
-                        //if (board[i, j].Name.Equals("Neo"))
-                        //{
-                        //    foundSmith = true;
-                        //}
+                    
+                }
 
-
-                    }
+                
 
 
                 

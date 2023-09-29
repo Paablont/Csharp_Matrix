@@ -10,7 +10,7 @@ namespace Csharp_MatrixProject
     
     internal class CharacterFactory
     {
-        private const int TAMANIO_CARACTERES = 200;
+        private const int TAMANIO_CHARACTERES = 200;
         string[] names = { "Michelle", "Alexander", "James", "Caroline", "Claire", "Jessica", "Erik", "Mike" };
         string[] cities = { "Nueva York", "Boston", "Baltimore", "Atlanta", "Detroit", "Dallas", "Denver" };
         Character[] charactersArray = new Character[200];
@@ -47,7 +47,7 @@ namespace Csharp_MatrixProject
             
             charactersArray.Add(nf.neoCreation());
             charactersArray.Add(smf.smithCreation());
-            for (int i = 3; i < TAMANIO_CARACTERES; i++)
+            for (int i = 3; i < TAMANIO_CHARACTERES; i++)
             {
                 charactersArray.Add(charCreation());
                 

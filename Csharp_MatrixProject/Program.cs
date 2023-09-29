@@ -32,6 +32,8 @@ static void startUp()
     Console.WriteLine("");
     Thread.Sleep(2000);
 
+   
+    
     while (seconds <= 20)
     {
         seconds++;
@@ -61,6 +63,7 @@ static void startUp()
         }
         Thread.Sleep(1000);
     }
+    
 
 }
 

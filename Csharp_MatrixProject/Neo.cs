@@ -26,8 +26,8 @@ namespace Csharp_MatrixProject
         public Character[,] neoMove(Character[,] board)
         {
             Character c;
-            Smith smith = Smith.obtainSmith(board);
-            Neo neo = obtainNeo(board);
+            Smith smith = Matrix.obtainSmith(board);
+            Neo neo = Matrix.obtainNeo(board);
             Random rnd = new Random();
             int newLatitude, newLongitude;
             newLatitude = rnd.Next(1, board.GetLength(0));
@@ -49,9 +49,9 @@ namespace Csharp_MatrixProject
                     neo.Longitude = newLongitude;
                     board[newLatitude, newLongitude] = neo;
                 }
-                
+
                 //La antigua pos de neo la dejo vacia
-                
+
 
             }
             else
@@ -91,90 +91,65 @@ namespace Csharp_MatrixProject
 
             int charNeoGenerate = 0;
 
-            Neo neo = obtainNeo(board);
+            Neo neo = Matrix.obtainNeo(board);
 
             //Como no especifica si las diagonales, comprobaré solo arriba,abajo,izq,der
 
             //Comprobamos posicion arriba
             if (charNeoGenerate != 1)
             {
-                for (int i = 0; i < board.GetLength(0); i++)
+
+                //Comprobamos posicion arriba
+                if (board[neo.Latitude - 1, neo.Longitude] == null)
                 {
-                    for (int j = 0; j < board.GetLength(1); j++)
+                    board[neo.Latitude - 1, neo.Longitude] = charactersArray[0];
+                    charactersArray.RemoveAt(0);
+                    charNeoGenerate = 1;
+                }
+                //Comprobamos posicion abajo
+                if (charNeoGenerate != 1)
+                {
+                    if (board[neo.Latitude + 1, neo.Longitude] == null)
                     {
-                        //Comprobamos posicion arriba
-                        if (board[neo.Latitude - 1, neo.Longitude] == null)
-                        {
-                            board[neo.Latitude - 1, neo.Longitude] = charactersArray[j];
-                            charNeoGenerate = 1;
-                        }
-                        //Comprobamos posicion abajo
-                        if (charNeoGenerate != 1)
-                        {
-                            if (board[neo.Latitude + 1, neo.Longitude] == null)
-                            {
 
-                                board[neo.Latitude + 1, neo.Longitude] = charactersArray[j];
-                                charNeoGenerate = 1;
+                        board[neo.Latitude + 1, neo.Longitude] = charactersArray[0];
+                        charactersArray.RemoveAt(0);
+                        charNeoGenerate = 1;
 
-                            }
-                        }
-                        //Comprobamos posicion izquierda
-                        if (charNeoGenerate != 1)
-                        {
-                            if (board[neo.Latitude, neo.Longitude - 1] == null)
-                            {
-
-                                board[neo.Latitude, neo.Longitude - 1] = charactersArray[j];
-                                charNeoGenerate = 1;
-                            }
-
-                        }
-
-                        //Comprobamos posicion derecha
-                        if (charNeoGenerate != 1)
-                        {
-                            if (board[neo.Latitude, neo.Longitude + 1] == null)
-                            {
-
-                                board[neo.Latitude, neo.Longitude + 1] = charactersArray[j];
-                                charNeoGenerate = 1;
-
-
-                            }
-                        }
                     }
                 }
+                //Comprobamos posicion izquierda
+                if (charNeoGenerate != 1)
+                {
+                    if (board[neo.Latitude, neo.Longitude - 1] == null)
+                    {
 
+                        board[neo.Latitude, neo.Longitude - 1] = charactersArray[0];
+                        charactersArray.RemoveAt(0);
+                        charNeoGenerate = 1;
+                    }
+
+                }
+
+                //Comprobamos posicion derecha
+                if (charNeoGenerate != 1)
+                {
+                    if (board[neo.Latitude, neo.Longitude + 1] == null)
+                    {
+
+                        board[neo.Latitude, neo.Longitude + 1] = charactersArray[0];
+                        charactersArray.RemoveAt(0);
+                        charNeoGenerate = 1;
+
+
+                    }
+                }
             }
 
             return board;
         }
 
-        //Metodo para buscar a Neo
-        public static Neo obtainNeo(Character[,] board)
-        {
-            Neo neo = null;
-            bool found = false;
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                for (int j = 0; j < board.GetLength(1) && !found; j++)
-                {
-                    if (board[i, j] != null)
-                    {
-                        if (board[i, j].Name.Equals("Neo"))
-                        {
-                            neo = (Neo)board[i, j];
-                            found = true;
-                            neo.Latitude = i;
-                            neo.Longitude = j;
-
-                        }
-                    }
-                }
-            }
-            return neo;
-        }
+        
 
 
 

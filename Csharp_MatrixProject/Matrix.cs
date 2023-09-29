@@ -14,6 +14,7 @@ namespace Csharp_MatrixProject
         Character c;
         Smith smith;
         Neo neo;
+        
         private const int raws = 15;
         private const int cols = 15;
 
@@ -38,7 +39,7 @@ namespace Csharp_MatrixProject
         //Turno de Neo
         public Character[,] neoTurn(List<Character> charactersArray, Character[,] board)
         {
-            Neo neo = Neo.obtainNeo(board);
+            Neo neo = Matrix.obtainNeo(board);
 
             if (neo.theChosenOne())
             {
@@ -65,12 +66,63 @@ namespace Csharp_MatrixProject
         public Character[,] smithTurn(Character[,] board)
         {
 
-            Smith smith = Smith.obtainSmith(board);
+            Smith smith = Matrix.obtainSmith(board);
             smith.smithMove(board);
-            //smith.killCharacter(board);
+            
 
             return board;
         }
+        //Metodo para buscar a Neo
+        public static Neo obtainNeo(Character[,] board)
+        {
+            Neo neo = null;
+            bool found = false;
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.GetLength(1) && !found; j++)
+                {
+                    if (board[i, j] != null)
+                    {
+                        if (board[i, j].Name.Equals("Neo"))
+                        {
+                            neo = (Neo)board[i, j];
+                            found = true;
+                            neo.Latitude = i;
+                            neo.Longitude = j;
+
+                        }
+                    }
+                }
+            }
+            return neo;
+        }
+
+
+        //Metodo para buscar a smith en board
+        public static Smith obtainSmith(Character[,] board)
+        {
+            Smith sm = null;
+            bool found = false;
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = 0; j < board.GetLength(1) && !found; j++)
+                {
+                    if (board[i, j] != null)
+                    {
+                        if (board[i, j].Name.Equals("Smith"))
+                        {
+                            sm = (Smith)board[i, j];
+                            found = true;
+                            sm.Latitude = i;
+                            sm.Longitude = j;
+
+                        }
+                    }
+                }
+            }
+            return sm;
+        }
+
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,26 +45,43 @@ namespace Csharp_MatrixProject
         //Personaje muere por porcentaje (REVISAR)
         public static Character[,] charDeath(List<Character> charactersArray, Character[,] board)
         {
-            Character c = obtainCharacter(board);
-            if (!(c is Neo && c is Smith))
+            Neo neo = Matrix.obtainNeo(board);
+            Smith sm = Matrix.obtainSmith(board);
+            for(int i = 0; i < board.GetLength(0); i++)
             {
-                if (c.DeathPerc > 0.7)
+                for(int j= 0; j < board.GetLength(1); j++)
                 {
-                    board[c.Latitude, c.Longitude] = null;
-                    if (board[charactersArray[0].Latitude, charactersArray[0].Longitude] == null)
+                    //Comprobamos que el objeto de esa posicion es un Character
+                    if(board[i, j] != null && !(board[i, j] is Neo) && !(board[i, j] is Smith))
                     {
-                        board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[0];
-                        charactersArray.RemoveAt(0);
+                        //Console.WriteLine(board[i, j].GetType());
+                        if (board[i, j].DeathPerc > 0.7)
+                        {
+                            //Comprobamos que el Character que vayamos a meter NO ocupe la misma pos de Neo o Smith
+                            if ((charactersArray[j].Latitude != neo.Latitude && charactersArray[j].Longitude != neo.Longitude) || ((charactersArray[j].Latitude != sm.Latitude && charactersArray[j].Longitude != sm.Longitude)))
+                            {
+                                board[i, j] = null;
+                                board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[j];
+                                charactersArray.RemoveAt(0);
+                            }
+                            
+                          
+                        }
+                        else
+                        {
+
+                            board[i, j].DeathPerc += 0.1;
+
+                        }
                     }
-
+                    
                 }
-                else
-                {
-
-                    c.DeathPerc += 0.1;
-
-                }
+               
             }
+            
+
+
+
 
             return board;
         }

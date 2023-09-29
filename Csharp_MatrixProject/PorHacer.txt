@@ -1,5 +1,5 @@
 ﻿-Que la matriz se pueda modificar de tamaño sin que de error
 
--Metodo smith mata o no a un personaje
+-Que genere si o si a Neo y Smith de primeras SIEMPRE
 
--Personaje mata a neo y smith
+-Comprobar mas cosas

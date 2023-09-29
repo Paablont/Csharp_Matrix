@@ -34,48 +34,47 @@ namespace Csharp_MatrixProject
 
         }
 
-        //Matar a un personaje  (REVISAR)
-        public Character[,] killCharacter(Character[,] board)
-        {
-            Random rn = new Random();
-            int infectCapacity = infectHability();
-            Smith sm = obtainSmith(board);
-            sm.InfectRange = infectCapacity;
+        ////Matar a un personaje  (ESTE METODO DIJIMOS QUE NO SE HACE. SMITH MATA SI O SI AL PERSONAJE SI PASA POR EL)
+        //public Character[,] killCharacter(Character[,] board)
+        //{
+        //    Random rn = new Random();
+        //    int infectCapacity = infectHability();
+        //    Smith sm = obtainSmith(board);
+        //    sm.InfectRange = infectCapacity;
 
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                for (int j = 0; j < board.GetLength(1); j++)
-                {
-                    if (board[i, j] != null)
-                    {
-                        if (board[i, j] == board[sm.Latitude, sm.Longitude] && !board[i, j].Name.Equals("Neo"))
-                        {
-                            if (sm.InfectRange > 5)
-                            {
-                                Console.WriteLine("Smith ha matado a {0}", board[i, j].Name);
-                                board[i, j] = null;
-                            }
+        //    for (int i = 0; i < board.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < board.GetLength(1); j++)
+        //        {
+        //            if (board[i, j] != null)
+        //            {
+        //                if (board[i, j] == board[sm.Latitude, sm.Longitude] && !board[i, j].Name.Equals("Neo"))
+        //                {
+        //                    if (sm.InfectRange > 5)
+        //                    {
+        //                        Console.WriteLine("Smith ha matado a {0}", board[i, j].Name);
+        //                        board[i, j] = null;
+        //                    }
 
-                        }
-                    }
-                }
-            }
+        //                }
+        //            }
+        //        }
+        //    }
 
 
-            return board;
-        }
+        //    return board;
+        //}
 
         //Movimiento smith
         public Character[,] smithMove(Character[,] board)
         {
             int neoRange;
-            Character neo = Neo.obtainNeo(board);
-            Character smith = obtainSmith(board);
+            Character neo = Matrix.obtainNeo(board);
+            Character smith = Matrix.obtainSmith(board);
             //Esto me servira para saber si Neo esta a la izq o derecha de Smith y arriba o abajo de él
             bool neoIsleft = false, neoIsUp = false;
             //Calculamoss distancia
             neoRange = Math.Max(Math.Abs(neo.Latitude - smith.Latitude), Math.Abs(neo.Longitude - smith.Longitude));
-
 
             //Vemos si neo esta a la arriba o abaj  y derecha o izq
             if (smith.Latitude >= neo.Latitude)
@@ -99,10 +98,21 @@ namespace Csharp_MatrixProject
                 board[smith.Latitude, smith.Longitude] = null;
                 smith.Latitude -= 1;
                 smith.Longitude -= 1;
-                if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                //Si la pos de smith es igual a la de neo 
+                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
                 {
+                    smith.Latitude += 1;
+                    smith.Longitude += 1;
                     board[smith.Latitude, smith.Longitude] = smith;
                 }
+                else
+                {
+                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                    {
+                        board[smith.Latitude, smith.Longitude] = smith;
+                    }
+                }
+
 
 
 
@@ -115,9 +125,19 @@ namespace Csharp_MatrixProject
                 board[smith.Latitude, smith.Longitude] = null;
                 smith.Latitude += 1;
                 smith.Longitude -= 1;
-                if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
                 {
+
+                    smith.Latitude -= 1;
+                    smith.Longitude += 1;
                     board[smith.Latitude, smith.Longitude] = smith;
+                }
+                else
+                {
+                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                    {
+                        board[smith.Latitude, smith.Longitude] = smith;
+                    }
                 }
 
             }
@@ -128,9 +148,19 @@ namespace Csharp_MatrixProject
                 board[smith.Latitude, smith.Longitude] = null;
                 smith.Latitude -= 1;
                 smith.Longitude += 1;
-                if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
                 {
+
+                    smith.Latitude += 1;
+                    smith.Longitude -= 1;
                     board[smith.Latitude, smith.Longitude] = smith;
+                }
+                else
+                {
+                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                    {
+                        board[smith.Latitude, smith.Longitude] = smith;
+                    }
                 }
 
             }
@@ -141,42 +171,24 @@ namespace Csharp_MatrixProject
                 board[smith.Latitude, smith.Longitude] = null;
                 smith.Latitude += 1;
                 smith.Longitude += 1;
-                if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
                 {
+
+                    smith.Latitude -= 1;
+                    smith.Longitude -= 1;
                     board[smith.Latitude, smith.Longitude] = smith;
+                }
+                else
+                {
+                    if (board[smith.Latitude, smith.Longitude] != board[neo.Latitude, neo.Longitude])
+                    {
+                        board[smith.Latitude, smith.Longitude] = smith;
+                    }
                 }
 
             }
-
-
-
-
             return board;
         }
 
-        //Metodo para buscar a smith en board
-        public static Smith obtainSmith(Character[,] board)
-        {
-            Smith sm = null;
-            bool found = false;
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                for (int j = 0; j < board.GetLength(1) && !found; j++)
-                {
-                    if (board[i, j] != null)
-                    {
-                        if (board[i, j].Name.Equals("Smith"))
-                        {
-                            sm = (Smith)board[i, j];
-                            found = true;
-                            sm.Latitude = i;
-                            sm.Longitude = j;
-
-                        }
-                    }
-                }
-            }
-            return sm;
-        }
     }
 }
