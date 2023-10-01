@@ -45,6 +45,7 @@ namespace Csharp_MatrixProject
         //Metodo de muerte del personaje
         public static Character[,] charDeath(List<Character> charactersArray, Character[,] board)
         {
+
             Neo neo = Matrix.obtainNeo(board);
             Smith sm = Matrix.obtainSmith(board);
             for (int i = 0; i < board.GetLength(0); i++)
@@ -52,18 +53,22 @@ namespace Csharp_MatrixProject
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
                     //Comprobamos que el objeto de esa posicion es un Character
-                    if (board[i, j] != null && !(board[i, j] is Neo) && !(board[i, j] is Smith))
+                    if ((board[i, j] != null) && !((board[i, j].Name.Equals("Neo") || (board[i, j].Name.Equals("Smith")))))
                     {
                         //Compruebo el porcentaje de muerte
                         if (board[i, j].DeathPerc > 0.7)
                         {
 
                             //Compruebo que la lista de Character no este vacia y que las posicion del Character que vaya a entrar no sean ni de neo ni de smith
-                            if ((charactersArray.Count > 0) && ((charactersArray[0].Latitude != neo.Latitude && charactersArray[0].Longitude != neo.Longitude) && (charactersArray[0].Latitude != sm.Latitude && charactersArray[0].Longitude != sm.Longitude)))
+                            if ((charactersArray.Count > 0))
+
                             {
                                 board[i, j] = null;
-                                board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[0];
-                                charactersArray.RemoveAt(0);
+                                if ((board[charactersArray[j].Latitude, charactersArray[j].Longitude] == null) && ((charactersArray[0].Latitude != neo.Latitude && charactersArray[0].Longitude != neo.Longitude) && (charactersArray[0].Latitude != sm.Latitude && charactersArray[0].Longitude != sm.Longitude)))
+                                {
+                                    board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[0];
+                                    charactersArray.RemoveAt(0);
+                                }
                             }
 
 
@@ -71,7 +76,10 @@ namespace Csharp_MatrixProject
                         else
                         {
 
+
                             board[i, j].DeathPerc += 0.1;
+
+
 
                         }
                     }
@@ -80,6 +88,6 @@ namespace Csharp_MatrixProject
 
             }
             return board;
-        }       
+        }
     }
 }

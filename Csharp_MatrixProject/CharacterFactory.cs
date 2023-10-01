@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Csharp_MatrixProject
 {
-    
+
     internal class CharacterFactory
     {
         private const int TAMANIO_CHARACTERES = 200;
         string[] names = { "Michelle", "Alexander", "James", "Caroline", "Claire", "Jessica", "Erik", "Mike" };
         string[] cities = { "Nueva York", "Boston", "Baltimore", "Atlanta", "Detroit", "Dallas", "Denver" };
-        Character[] charactersArray = new Character[200];
         Character c;
         Matrix m = new Matrix();
         Random rnd = new Random();
@@ -41,16 +40,21 @@ namespace Csharp_MatrixProject
         }
 
         //Metodo para meter en una lista los Characters para posteriormente enviarlos a la matrix(board)
-        public List<Character> charInArray( NeoFactory nf, SmithFactory smf)
+        public List<Character> charInArray(NeoFactory nf, SmithFactory smf)
         {
             List<Character> charactersArray = new List<Character>();
-            
+
             charactersArray.Add(nf.neoCreation());
             charactersArray.Add(smf.smithCreation());
-            for (int i = 3; i < TAMANIO_CHARACTERES; i++)
+            for (int i = 2; i < TAMANIO_CHARACTERES; i++)
             {
-                charactersArray.Add(charCreation());
-                
+                c = charCreation();
+                if (c.Latitude != charactersArray[0].Latitude || c.Longitude != charactersArray[0].Longitude)
+                {
+                    charactersArray.Add(charCreation());
+                }
+
+
             }
 
             return charactersArray;
@@ -66,7 +70,7 @@ namespace Csharp_MatrixProject
         //    }
         //}
 
-        
+
 
     }
 

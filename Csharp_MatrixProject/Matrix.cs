@@ -14,7 +14,7 @@ namespace Csharp_MatrixProject
         Character c;
         Smith smith;
         Neo neo;
-        
+
         private const int raws = 15;
         private const int cols = 15;
 
@@ -62,14 +62,14 @@ namespace Csharp_MatrixProject
             return board;
         }
 
-        
+
         //Metodo de turno de Smith
         public Character[,] smithTurn(Character[,] board)
         {
 
             Smith smith = Matrix.obtainSmith(board);
             smith.smithMove(board);
-            
+
 
             return board;
         }

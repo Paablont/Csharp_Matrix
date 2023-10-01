@@ -30,13 +30,13 @@ namespace Csharp_MatrixProject
             Neo neo = Matrix.obtainNeo(board);
             Random rnd = new Random();
             int newLatitude, newLongitude;
-            newLatitude = rnd.Next(1, board.GetLength(0)-1);
-            newLongitude = rnd.Next(1, board.GetLength(1)-1);
+            newLatitude = rnd.Next(1, board.GetLength(0) - 1);
+            newLongitude = rnd.Next(1, board.GetLength(1) - 1);
 
             //Compruebo que la posicion nueva donde va a ir Neo esta vacia y si no hay que hacer intercambio
             if (board[newLatitude, newLongitude] == null)
             {
-                
+
                 if (smith.Latitude == neo.Latitude && smith.Longitude == neo.Longitude)
                 {
                     neo.Latitude = newLatitude;
@@ -51,11 +51,11 @@ namespace Csharp_MatrixProject
                     board[newLatitude, newLongitude] = neo;
                 }
 
-                
+
 
 
             }
-            
+
             else
             {
                 //Cojo el obj del Character de la nueva pos y lo cambio con Neo
@@ -98,7 +98,7 @@ namespace Csharp_MatrixProject
             //Como no especifica si las diagonales, comprobaré solo arriba,abajo,izq,der
 
             //Comprobamos posicion arriba
-            if (charNeoGenerate != 1)
+            if (charactersArray.Count > 0 && charNeoGenerate != 1)
             {
 
                 //Comprobamos posicion arriba
@@ -151,7 +151,7 @@ namespace Csharp_MatrixProject
             return board;
         }
 
-        
+
 
 
 

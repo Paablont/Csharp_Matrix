@@ -17,18 +17,17 @@ namespace Csharp_MatrixProject
         Random rnd = new Random();
         public Smith smithCreation()
         {
-            
+
             citiesInt = rnd.Next(1, cities.Length);
             age = rnd.Next(1, 90);
-            latitude = rnd.Next(1, 15);
-            longitude = rnd.Next(1, 15);
+            latitude = rnd.Next(1, 14);
+            longitude = rnd.Next(1, 14);
             id = rnd.Next(1, 200);
-            deathPerc = 0.0;
-            infectRange = rnd.Next(1,10);
+            infectRange = rnd.Next(1, 10);
             return n = new Smith(name, cities[citiesInt], latitude, longitude, age, id, deathPerc, infectRange);
 
         }
 
-        
+
     }
 }

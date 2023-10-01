@@ -13,12 +13,13 @@ static void startUp()
     Smith sm = new Smith();
     Matrix m = new Matrix();
     bool endGame = false;
+    int countBoard = 0;
     int seconds = 0;
     CharacterFactory cf = new CharacterFactory();
     NeoFactory nf = new NeoFactory();
     SmithFactory smf = new SmithFactory();
     MatrixFactory mf = new MatrixFactory();
-    
+
     Character[,] board;
     Character[,] charAlive = new Character[m.Raws, m.Cols];
     List<Character> charactersArray;
@@ -33,12 +34,24 @@ static void startUp()
     Thread.Sleep(2000);
 
 
-    
 
-    
-    while (seconds <= 20)
+
+
+    while (seconds < 20 || !endGame)
     {
         seconds++;
+        countBoard = 0;
+        for (int i = 0; i < board.GetLength(0); i++)
+        {
+            for (int j = 0; j < board.GetLength(1); j++)
+            {
+                if (board[i, j] != null)
+                {
+                    countBoard++;
+                }
+            }
+        }
+
 
         if (seconds % 1 == 0)
         {
@@ -46,7 +59,6 @@ static void startUp()
             m.charactTurn(charactersArray, board);
             mf.boardPrint(board);
             Console.WriteLine("");
-
 
         }
         if (seconds % 2 == 0)
@@ -63,9 +75,13 @@ static void startUp()
             mf.boardPrint(board);
             Console.WriteLine("");
         }
+        if (countBoard == 2)
+        {
+            endGame = true;
+        }
+
         Thread.Sleep(1000);
     }
-    
 
 }
 

@@ -25,14 +25,23 @@ namespace Csharp_MatrixProject
             Random rnd = new Random();
             bool foundNeo = false;
             bool foundSmith = false;
+            board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[0];
+            charactersArray.RemoveAt(0);
+            board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[0];
+            charactersArray.RemoveAt(0);
+
+            Neo n = Matrix.obtainNeo(board);
+            Smith sm = Matrix.obtainSmith(board);
+
             do
             {
                 for (int j = 0; j < charactersArray.Count; j++)
                 {
 
-                    board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[0];
-
+                    board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[0];
                     charactersArray.RemoveAt(0);
+
+
 
                 }
 
@@ -60,7 +69,7 @@ namespace Csharp_MatrixProject
                     }
                 }
 
-            } while (!foundNeo && !foundSmith);
+            } while (!foundNeo && !foundSmith && charactersArray.Count > 0);
 
             return board;
         }
