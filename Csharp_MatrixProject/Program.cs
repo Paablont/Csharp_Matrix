@@ -19,7 +19,6 @@ static void startUp()
     NeoFactory nf = new NeoFactory();
     SmithFactory smf = new SmithFactory();
     MatrixFactory mf = new MatrixFactory();
-
     Character[,] board;
     Character[,] charAlive = new Character[m.Raws, m.Cols];
     List<Character> charactersList;
@@ -37,12 +36,10 @@ static void startUp()
 
 
 
-    while (seconds < 20)
+    while (seconds < 20 && !endGame)
     {
         seconds++;
         countBoard = 0;
-        
-
 
         if (seconds % 1 == 0)
         {
@@ -50,8 +47,19 @@ static void startUp()
             m.charactTurn(charactersList, board);
             mf.boardPrint(board);
             Console.WriteLine("");
-            Console.WriteLine("Quedam {0} personajes en el array",charactersList.Count);
             
+            foreach(Character p in board)
+            {
+                if(p != null)
+                {
+                    countBoard++;
+                }
+            }
+            if (countBoard == 2)
+            {
+                endGame = true;
+            }
+
 
         }
         if (seconds % 2 == 0)
@@ -68,7 +76,7 @@ static void startUp()
             mf.boardPrint(board);
             Console.WriteLine("");
         }
-        
+
 
         Thread.Sleep(1000);
     }

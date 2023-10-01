@@ -21,10 +21,11 @@ namespace Csharp_MatrixProject
         public Character[,] matrixCreation(List<Character> charactersList)
         {
             Character[,] board = new Character[m.Raws, m.Cols];
-            int contadorLista = 0;
+
             Random rnd = new Random();
             bool foundNeo = false;
             bool foundSmith = false;
+            //Metemos a neo y smith en la matriz
             board[charactersList[0].Latitude, charactersList[0].Longitude] = charactersList[0];
             charactersList.RemoveAt(0);
             board[charactersList[0].Latitude, charactersList[0].Longitude] = charactersList[0];
@@ -33,40 +34,47 @@ namespace Csharp_MatrixProject
             Neo n = Matrix.obtainNeo(board);
             Smith sm = Matrix.obtainSmith(board);
 
-            do
+            //Generamos a un aleatorio para coger X personajes de la lista
+            int aleatorio = rnd.Next(10, m.Raws * m.Cols - 2);
+
+            //Los metemos en el board
+            for (int i = 2; i < charactersList.Count && i < aleatorio; i++)
             {
-                for (int j = 0; j < charactersList.Count; j++)
+                //Comprobamos que la posicion donde van es null
+                if (board[charactersList[0].latitude, charactersList[0].longitude] == null)
                 {
+                    board[charactersList[0].latitude, charactersList[0].longitude] = charactersList[i];
 
-                    board[charactersList[j].Latitude, charactersList[j].Longitude] = charactersList[0];
-                    charactersList.RemoveAt(0);
                 }
+               
+                charactersList.RemoveAt(0);
+            }
 
-                //Compruebo que Neo ha entrado correctamente en la matriz
-                for (int i = 0; i < board.GetLength(0); i++)
-                {
-                    for (int j = 0; j < board.GetLength(1); j++)
-                    {
-                        if (board[i, j] != null && board[i, j] is Neo)
-                        {
-                            foundNeo = true;
-                        }
-                    }
-                }
+            ////Compruebo que Neo ha entrado correctamente en la matriz
+            //for (int i = 0; i < board.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < board.GetLength(1); j++)
+            //    {
+            //        if (board[i, j] != null && board[i, j] is Neo)
+            //        {
+            //            foundNeo = true;
+            //        }
+            //    }
+            //}
 
-                //Compruebo que Smith ha entrado correctamente en la matriz
-                for (int i = 0; i < board.GetLength(0); i++)
-                {
-                    for (int j = 0; j < board.GetLength(1); j++)
-                    {
-                        if (board[i, j] != null && board[i, j] is Smith)
-                        {
-                            foundSmith = true;
-                        }
-                    }
-                }
+            ////Compruebo que Smith ha entrado correctamente en la matriz
+            //for (int i = 0; i < board.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < board.GetLength(1); j++)
+            //    {
+            //        if (board[i, j] != null && board[i, j] is Smith)
+            //        {
+            //            foundSmith = true;
+            //        }
+            //    }
+            //}
 
-            } while (!foundNeo && !foundSmith && charactersList.Count > 0);
+
 
             return board;
         }

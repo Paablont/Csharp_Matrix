@@ -30,8 +30,8 @@ namespace Csharp_MatrixProject
             namesInt = rnd.Next(1, names.Length);
             citiesInt = rnd.Next(1, cities.Length);
             age = rnd.Next(1, 90);
-            latitude = rnd.Next(1, m.Raws);
-            longitude = rnd.Next(1, m.Cols);
+            latitude = rnd.Next(0, m.Raws);
+            longitude = rnd.Next(0, m.Cols);
             id = rnd.Next(1, 200);
             deathPerc = rnd.NextDouble();
 

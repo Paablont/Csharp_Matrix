@@ -64,11 +64,13 @@ namespace Csharp_MatrixProject
 
                             {
                                 board[i, j] = null;
-                                if ((board[charactersArray[j].Latitude, charactersArray[j].Longitude] == null) && ((charactersArray[0].Latitude != neo.Latitude && charactersArray[0].Longitude != neo.Longitude) && (charactersArray[0].Latitude != sm.Latitude && charactersArray[0].Longitude != sm.Longitude)))
+                                if ((board[charactersArray[j].Latitude, charactersArray[j].Longitude] == null))
                                 {
+                                    
                                     board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[0];
-                                    charactersArray.RemoveAt(0);
+                                    
                                 }
+                                charactersArray.RemoveAt(0);
                             }
 
 

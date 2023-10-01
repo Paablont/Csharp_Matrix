@@ -47,9 +47,9 @@ namespace Csharp_MatrixProject
         public Character[,] neoTurn(List<Character> charactersList, Character[,] board)
         {
             Neo neo = Matrix.obtainNeo(board);
-
+            bool chosenOne = neo.theChosenOne();
             //Compruebo si es el elegido para que genere un nuevo personaje cerca de el o no
-            if (neo.theChosenOne())
+            if (chosenOne)
             {
                 neo.charNeoGenerate(charactersList, board);
                 neo.neoMove(board);

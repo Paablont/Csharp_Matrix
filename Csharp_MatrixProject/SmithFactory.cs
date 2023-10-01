@@ -9,6 +9,7 @@ namespace Csharp_MatrixProject
     internal class SmithFactory
     {
         Smith n;
+        Matrix m = new Matrix();
         string name = "Smith";
         string[] cities = { "Nueva York", "Boston", "Baltimore", "Atlanta", "Detroit", "Dallas", "Denver" };
         int citiesInt, latitude, longitude, id, age;
@@ -20,8 +21,8 @@ namespace Csharp_MatrixProject
 
             citiesInt = rnd.Next(1, cities.Length);
             age = rnd.Next(1, 90);
-            latitude = rnd.Next(1, 14);
-            longitude = rnd.Next(1, 14);
+            latitude = rnd.Next(1, m.Raws -1);
+            longitude = rnd.Next(1, m.Cols -1);
             id = rnd.Next(1, 200);
             infectRange = rnd.Next(1, 10);
             return n = new Smith(name, cities[citiesInt], latitude, longitude, age, id, deathPerc, infectRange);

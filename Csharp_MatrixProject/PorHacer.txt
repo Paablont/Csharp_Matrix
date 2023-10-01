@@ -1,5 +1,2 @@
-﻿-Que la matriz se pueda modificar de tamaño sin que de error
+﻿
 
--Que smith y neo esten SIEMPRE en la matriz
-
--El fin del juego
