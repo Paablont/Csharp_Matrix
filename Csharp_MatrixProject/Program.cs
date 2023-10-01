@@ -22,13 +22,13 @@ static void startUp()
 
     Character[,] board;
     Character[,] charAlive = new Character[m.Raws, m.Cols];
-    List<Character> charactersArray;
+    List<Character> charactersList;
 
     //Metemos los personajes en un Array
-    charactersArray = cf.charInArray(nf, smf);
+    charactersList = cf.charInList(nf, smf);
 
     //Los repartimos por el tablero
-    board = mf.matrixCreation(charactersArray);
+    board = mf.matrixCreation(charactersList);
     mf.boardPrint(board);
     Console.WriteLine("");
     Thread.Sleep(2000);
@@ -37,28 +37,21 @@ static void startUp()
 
 
 
-    while (seconds < 20 || !endGame)
+    while (seconds < 20)
     {
         seconds++;
         countBoard = 0;
-        for (int i = 0; i < board.GetLength(0); i++)
-        {
-            for (int j = 0; j < board.GetLength(1); j++)
-            {
-                if (board[i, j] != null)
-                {
-                    countBoard++;
-                }
-            }
-        }
+        
 
 
         if (seconds % 1 == 0)
         {
             Console.WriteLine("TURNO PERSONAJE");
-            m.charactTurn(charactersArray, board);
+            m.charactTurn(charactersList, board);
             mf.boardPrint(board);
             Console.WriteLine("");
+            Console.WriteLine("Quedam {0} personajes en el array",charactersList.Count);
+            
 
         }
         if (seconds % 2 == 0)
@@ -71,14 +64,11 @@ static void startUp()
         if (seconds % 5 == 0)
         {
             Console.WriteLine("TURNO NEO");
-            m.neoTurn(charactersArray, board);
+            m.neoTurn(charactersList, board);
             mf.boardPrint(board);
             Console.WriteLine("");
         }
-        if (countBoard == 2)
-        {
-            endGame = true;
-        }
+        
 
         Thread.Sleep(1000);
     }

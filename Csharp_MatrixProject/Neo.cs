@@ -88,7 +88,7 @@ namespace Csharp_MatrixProject
 
         }
         //Funcion generar personaje adyadcente 
-        public Character[,] charNeoGenerate(List<Character> charactersArray, Character[,] board)
+        public Character[,] charNeoGenerate(List<Character> charactersList, Character[,] board)
         {
 
             int charNeoGenerate = 0;
@@ -98,14 +98,14 @@ namespace Csharp_MatrixProject
             //Como no especifica si las diagonales, comprobaré solo arriba,abajo,izq,der
 
             //Comprobamos posicion arriba
-            if (charactersArray.Count > 0 && charNeoGenerate != 1)
+            if (charactersList.Count > 0 && charNeoGenerate != 1)
             {
 
                 //Comprobamos posicion arriba
                 if (board[neo.Latitude - 1, neo.Longitude] == null)
                 {
-                    board[neo.Latitude - 1, neo.Longitude] = charactersArray[0];
-                    charactersArray.RemoveAt(0);
+                    board[neo.Latitude - 1, neo.Longitude] = charactersList[0];
+                    charactersList.RemoveAt(0);
                     charNeoGenerate = 1;
                 }
                 //Comprobamos posicion abajo
@@ -114,8 +114,8 @@ namespace Csharp_MatrixProject
                     if (board[neo.Latitude + 1, neo.Longitude] == null)
                     {
 
-                        board[neo.Latitude + 1, neo.Longitude] = charactersArray[0];
-                        charactersArray.RemoveAt(0);
+                        board[neo.Latitude + 1, neo.Longitude] = charactersList[0];
+                        charactersList.RemoveAt(0);
                         charNeoGenerate = 1;
 
                     }
@@ -126,8 +126,8 @@ namespace Csharp_MatrixProject
                     if (board[neo.Latitude, neo.Longitude - 1] == null)
                     {
 
-                        board[neo.Latitude, neo.Longitude - 1] = charactersArray[0];
-                        charactersArray.RemoveAt(0);
+                        board[neo.Latitude, neo.Longitude - 1] = charactersList[0];
+                        charactersList.RemoveAt(0);
                         charNeoGenerate = 1;
                     }
 
@@ -139,8 +139,8 @@ namespace Csharp_MatrixProject
                     if (board[neo.Latitude, neo.Longitude + 1] == null)
                     {
 
-                        board[neo.Latitude, neo.Longitude + 1] = charactersArray[0];
-                        charactersArray.RemoveAt(0);
+                        board[neo.Latitude, neo.Longitude + 1] = charactersList[0];
+                        charactersList.RemoveAt(0);
                         charNeoGenerate = 1;
 
 

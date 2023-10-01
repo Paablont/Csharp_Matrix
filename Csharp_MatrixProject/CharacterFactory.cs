@@ -40,24 +40,26 @@ namespace Csharp_MatrixProject
         }
 
         //Metodo para meter en una lista los Characters para posteriormente enviarlos a la matrix(board)
-        public List<Character> charInArray(NeoFactory nf, SmithFactory smf)
+        public List<Character> charInList(NeoFactory nf, SmithFactory smf)
         {
-            List<Character> charactersArray = new List<Character>();
+            List<Character> charactersList = new List<Character>();
+            
+            charactersList.Add(nf.neoCreation());
+            charactersList.Add(smf.smithCreation());
 
-            charactersArray.Add(nf.neoCreation());
-            charactersArray.Add(smf.smithCreation());
+            
             for (int i = 2; i < TAMANIO_CHARACTERES; i++)
             {
                 c = charCreation();
-                if (c.Latitude != charactersArray[0].Latitude || c.Longitude != charactersArray[0].Longitude)
+                if (c.Latitude != charactersList[0].Latitude || c.Longitude != charactersList[0].Longitude)
                 {
-                    charactersArray.Add(charCreation());
+                    charactersList.Add(charCreation());
                 }
 
 
             }
 
-            return charactersArray;
+            return charactersList;
         }
 
 

@@ -18,31 +18,28 @@ namespace Csharp_MatrixProject
 
 
         //Metodo para crear la matrix (board)
-        public Character[,] matrixCreation(List<Character> charactersArray)
+        public Character[,] matrixCreation(List<Character> charactersList)
         {
             Character[,] board = new Character[m.Raws, m.Cols];
             int contadorLista = 0;
             Random rnd = new Random();
             bool foundNeo = false;
             bool foundSmith = false;
-            board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[0];
-            charactersArray.RemoveAt(0);
-            board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[0];
-            charactersArray.RemoveAt(0);
+            board[charactersList[0].Latitude, charactersList[0].Longitude] = charactersList[0];
+            charactersList.RemoveAt(0);
+            board[charactersList[0].Latitude, charactersList[0].Longitude] = charactersList[0];
+            charactersList.RemoveAt(0);
 
             Neo n = Matrix.obtainNeo(board);
             Smith sm = Matrix.obtainSmith(board);
 
             do
             {
-                for (int j = 0; j < charactersArray.Count; j++)
+                for (int j = 0; j < charactersList.Count; j++)
                 {
 
-                    board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[0];
-                    charactersArray.RemoveAt(0);
-
-
-
+                    board[charactersList[j].Latitude, charactersList[j].Longitude] = charactersList[0];
+                    charactersList.RemoveAt(0);
                 }
 
                 //Compruebo que Neo ha entrado correctamente en la matriz
@@ -69,7 +66,7 @@ namespace Csharp_MatrixProject
                     }
                 }
 
-            } while (!foundNeo && !foundSmith && charactersArray.Count > 0);
+            } while (!foundNeo && !foundSmith && charactersList.Count > 0);
 
             return board;
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pablo\\Desktop\\RepMatrix1\\Csharp_MatrixProject\\Csharp_MatrixProject.csproj": {}
+    "C:\\Users\\pablo\\Desktop\\RepMatrix\\Csharp_MatrixProject\\Csharp_MatrixProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pablo\\Desktop\\RepMatrix1\\Csharp_MatrixProject\\Csharp_MatrixProject.csproj": {
+    "C:\\Users\\pablo\\Desktop\\RepMatrix\\Csharp_MatrixProject\\Csharp_MatrixProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pablo\\Desktop\\RepMatrix1\\Csharp_MatrixProject\\Csharp_MatrixProject.csproj",
+        "projectUniqueName": "C:\\Users\\pablo\\Desktop\\RepMatrix\\Csharp_MatrixProject\\Csharp_MatrixProject.csproj",
         "projectName": "Csharp_MatrixProject",
-        "projectPath": "C:\\Users\\pablo\\Desktop\\RepMatrix1\\Csharp_MatrixProject\\Csharp_MatrixProject.csproj",
+        "projectPath": "C:\\Users\\pablo\\Desktop\\RepMatrix\\Csharp_MatrixProject\\Csharp_MatrixProject.csproj",
         "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pablo\\Desktop\\RepMatrix1\\Csharp_MatrixProject\\obj\\",
+        "outputPath": "C:\\Users\\pablo\\Desktop\\RepMatrix\\Csharp_MatrixProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -35,23 +35,23 @@ namespace Csharp_MatrixProject
         }
 
         //Turno del personaje
-        public Character[,] charactTurn(List<Character> charactersArray, Character[,] board)
+        public Character[,] charactTurn(List<Character> charactersList, Character[,] board)
         {
-            Character.charDeath(charactersArray, board);
+            Character.charDeath(charactersList, board);
 
             return board;
 
         }
 
         //Metodo de turno de Neo
-        public Character[,] neoTurn(List<Character> charactersArray, Character[,] board)
+        public Character[,] neoTurn(List<Character> charactersList, Character[,] board)
         {
             Neo neo = Matrix.obtainNeo(board);
 
             //Compruebo si es el elegido para que genere un nuevo personaje cerca de el o no
             if (neo.theChosenOne())
             {
-                neo.charNeoGenerate(charactersArray, board);
+                neo.charNeoGenerate(charactersList, board);
                 neo.neoMove(board);
             }
             else
