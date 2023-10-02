@@ -151,6 +151,7 @@ namespace Csharp_MatrixProject
             return board;
         }
 
+        //Metodo para calcular la distancia hasta Neo
         public int neoRange(Character[,] board)
         {
             Neo neo = Matrix.obtainNeo(board);
