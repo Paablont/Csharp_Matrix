@@ -14,6 +14,7 @@ static void startUp()
     Matrix m = new Matrix();
     bool endGame = false;
     int countBoard = 0;
+    int neoRange;
     int seconds = 0;
     CharacterFactory cf = new CharacterFactory();
     NeoFactory nf = new NeoFactory();
@@ -36,7 +37,7 @@ static void startUp()
 
 
 
-    while (seconds < 20 && !endGame)
+    while (seconds < 20)
     {
         seconds++;
         countBoard = 0;
@@ -64,9 +65,17 @@ static void startUp()
         }
         if (seconds % 2 == 0)
         {
-            Console.WriteLine("TURNO SMITH");
-            m.smithTurn(board);
-            mf.boardPrint(board);
+            //He intentado mover a Smith en su turno tantas casillas como deberia pero no lo consigo. Dejo comentado mi intento
+            //neoRange = sm.neoRange(board);
+            
+            //for (int i = 0; i < neoRange; i++)
+            //{
+                Console.WriteLine("TURNO SMITH");
+                m.smithTurn(board);
+                mf.boardPrint(board);
+                
+            //}
+            
             Console.WriteLine("");
         }
         if (seconds % 5 == 0)

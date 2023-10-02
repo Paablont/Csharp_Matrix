@@ -53,7 +53,7 @@ namespace Csharp_MatrixProject
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
                     //Comprobamos que el objeto de esa posicion es un Character
-                    if ((board[i, j] != null) && !((board[i, j].Name.Equals("Neo") || (board[i, j].Name.Equals("Smith")))))
+                    if ((board[i, j] != null) && !((board[i, j].Name.Equals("Neo") && (board[i, j].Name.Equals("Smith")))))
                     {
                         //Compruebo el porcentaje de muerte
                         if (board[i, j].DeathPerc > 0.7)
@@ -67,7 +67,7 @@ namespace Csharp_MatrixProject
                                 if ((board[charactersArray[0].Latitude, charactersArray[0].Longitude] == null))
                                 {
                                     
-                                    board[charactersArray[j].Latitude, charactersArray[j].Longitude] = charactersArray[0];
+                                    board[charactersArray[0].Latitude, charactersArray[0].Longitude] = charactersArray[0];
                                     
                                 }
                                 charactersArray.RemoveAt(0);
