@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -53,7 +53,7 @@ namespace Csharp_MatrixProject
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
                     //Comprobamos que el objeto de esa posicion es un Character
-                    if ((board[i, j] != null) && !(board[i, j].Name.Equals("Neo")) && !(board[i, j].Name.Equals("Smith")))
+                    if ((board[i, j] != null) && !((board[i, j].Name.Equals("Neo") && (board[i, j].Name.Equals("Smith")))))
                     {
                         //Compruebo el porcentaje de muerte
                         if (board[i, j].DeathPerc > 0.7)
