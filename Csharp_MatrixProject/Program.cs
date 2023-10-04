@@ -1,4 +1,4 @@
-﻿using Csharp_MatrixProject;
+using Csharp_MatrixProject;
 using System.ComponentModel;
 
 startUp();
@@ -15,7 +15,6 @@ static void startUp()
     bool endGame = false;
     int countBoard = 0;
     int neoRange;
-
     int seconds = 0;
     CharacterFactory cf = new CharacterFactory();
     NeoFactory nf = new NeoFactory();
@@ -34,10 +33,14 @@ static void startUp()
     Console.WriteLine("");
     Thread.Sleep(2000);
 
-    while (seconds <= 20 && !endGame)
+
+
+
+
+    while (seconds < 20)
     {
         seconds++;
-        
+        countBoard = 0;
 
         if (seconds % 1 == 0)
         {
@@ -45,24 +48,36 @@ static void startUp()
             m.charactTurn(charactersList, board);
             mf.boardPrint(board);
             Console.WriteLine("");
-        }
+            
+            foreach(Character p in board)
+            {
+                if(p != null)
+                {
+                    countBoard++;
+                }
+            }
+            if (countBoard == 2)
+            {
+                endGame = true;
+            }
 
+
+        }
         if (seconds % 2 == 0)
         {
             //He intentado mover a Smith en su turno tantas casillas como deberia pero no lo consigo. Dejo comentado mi intento
             //neoRange = sm.neoRange(board);
-
+            
             //for (int i = 0; i < neoRange; i++)
             //{
-            Console.WriteLine("TURNO SMITH");
-            m.smithTurn(board);
-            mf.boardPrint(board);
-
+                Console.WriteLine("TURNO SMITH");
+                m.smithTurn(board);
+                mf.boardPrint(board);
+                
             //}
-
+            
             Console.WriteLine("");
         }
-
         if (seconds % 5 == 0)
         {
             Console.WriteLine("TURNO NEO");
@@ -71,43 +86,8 @@ static void startUp()
             Console.WriteLine("");
         }
 
-        foreach (Character p in board)
-        {
-            if (p != null)
-            {
-                countBoard++;
-            }
-        }
-
-        if (countBoard == 2)
-        {
-            endGame = true;
-            seconds = 20;
-            Console.WriteLine("SMITH HA MATADO A TODOS LOS CIUDADANOS: GANADOR SMITH");
-        }
-        
-
 
         Thread.Sleep(1000);
     }
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
